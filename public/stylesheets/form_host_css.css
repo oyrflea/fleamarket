@@ -1,0 +1,9 @@
+@charset "UTF-8";
+html{
+    width: 100%;
+    height: 100%;
+}
+head{
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 40px;
+}

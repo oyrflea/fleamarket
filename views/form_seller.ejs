@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta chatset="utf-8">
+    <title>FLEAS</title>
+    <link rel="shortcut icon" href="images/store.ico">
+    <link rel='stylesheet' href='stylesheets/join_style.css' />
+    <link rel="stylesheet" type="text/css" href="dist/semantic.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="dist/semantic.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+    <div class="ui container" id="conall">
+        <header>
+            <div id="head_top">
+                로그인
+            </div>
+
+            <div id="main_logo">
+                <img class="market_img" src="images/market.png" alt="market icon">
+                <div id="fleas">
+                    Fleas
+                </div>
+                <img class="market_img" src="images/market.png" alt="market icon">
+            </div>
+
+            <div class="ui five item menu">
+                <a class="item">플리마켓</a>
+                <a class="item">셀러</a>
+                <a class="item">공지사항</a>
+                <a class="item">리뷰</a>
+                <a class="item">마이페이지</a>
+            </div>
+        </header>
+
+        <div>
+            <h2 id="title">
+                셀러 등록
+            </h2>
+        </div>
+
+        <div class="application">
+            <form class="ui form">
+                <div class="field">
+                    <label>브랜드명(팀명)</label>
+                    <input type="text" name="id" placeholder="Id">
+                </div>
+                <div class="field">
+                    <label>이름</label>
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="field">
+                    <label>연락처</label>
+                    <input type="tel" name="phonenumber" placeholder="Phone Number">
+                </div>
+                <div class="field">
+                    <label>이메일</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label>판매 품목</label>
+                    <input type="text" name="saleitem" placeholder="Item">
+                </div>
+                <div class="field">
+                    <label>소개</label>
+                    <textarea></textarea>
+                </div>
+                <div id="join_button" class="ui fluid large submit button">가입</div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
