@@ -27,6 +27,10 @@ router.get('/join', function(req, res, next) {
   res.render('join', { title: 'Express' });
 });
 
+router.get('/notice', function(req, res, next) {
+  res.render('notice', { title: 'Express' });
+});
+
 router.get('/review', function(req, res, next) {
   res.render('review', { title: 'Express' });
 });

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#join_btn{
+    text-decoration: underline;
+}
+#no_account{
+    text-align: center;
+    margin-top: 30px;
+}

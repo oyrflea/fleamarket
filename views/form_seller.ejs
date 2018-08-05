@@ -5,7 +5,8 @@
     <meta chatset="utf-8">
     <title>FLEAS</title>
     <link rel="shortcut icon" href="images/store.ico">
-    <link rel='stylesheet' href='stylesheets/join_style.css' />
+    <link rel='stylesheet' href='stylesheets/common_style.css' />
+    <link rel='stylesheet' href='stylesheets/form_style.css' />
     <link rel="stylesheet" type="text/css" href="dist/semantic.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
@@ -16,30 +17,29 @@
 </head>
 
 <body>
-    <div class="ui container" id="conall">
+    <div class="ui container" id="all">
         <!-- 통일된 상단 메뉴 -->
         <header>
             <div id="head_top">
                 <a href="login">로그인</a>
             </div>
 
-            <div id="main_logo">
+            <a href="home" id="main_logo">
                 <img class="market_img" src="images/market.png" alt="market icon">
                 <div id="fleas">
                     Fleas
                 </div>
                 <img class="market_img" src="images/market.png" alt="market icon">
-            </div>
+            </a>
 
             <div class="ui five item menu">
-                <a class="item">플리마켓</a>
-                <a class="item">셀러</a>
-                <a class="item">공지사항</a>
-                <a class="item">리뷰</a>
-                <a class="item">마이페이지</a>
+                <a href="market" class="item">플리마켓</a>
+                <a href="seller" class="item">셀러</a>
+                <a href="notice" class="item">공지사항</a>
+                <a href="review" class="item">리뷰</a>
+                <a href="mypage" class="item">마이페이지</a>
             </div>
         </header>
-
         <div>
             <h2 id="title">
                 셀러 등록

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.item {
+    box-sizing:border-box !important;
+}
+#form_btn{
+    /* background-color: #e65680; */
+    margin-top: 30px;
+}
+.button{
+    background-color: #a8c2d4 !important;
+}
+.form{
+    width: 350px;
+    margin: 0 auto;
+}
+.application{
+    border:1px solid #22242626;
+    background-color:#f3f4f5;
+    margin: 0 100px;
+    padding: 50px;
+}
+.date{
+    width: 160px !important;
+}
+.time{
+    width: 140px !important;
+}
+#sample6_postcode{
+    width: 165px !important;
+}
