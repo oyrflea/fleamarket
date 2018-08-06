@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.notnum{
+    width: 100px;
+}
+.nottitle{
+    width: 450px;
+}
+.notuser{
+    width: auto;
+}
+.notdate{
+    width: 130px;
+}
+table{
+    text-align: center !important;
+}
+.application{
+    border:1px solid #22242626;
+    background-color:#f3f4f5;
+    margin: 0 100px 100px 100px;
+    padding: 50px;
+}
+#writebtn{
+    background-color: #a8c2d4;
+}
+#list_num{
+    text-align: center;
+}
