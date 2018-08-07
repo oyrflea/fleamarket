@@ -39,6 +39,9 @@ router.get('/test', function(req, res, next) {
   res.render('test', { title: 'Express' });
 });
 
+router.get('/mypageseller', function(req, res) {
+  res.render('mypageseller', { title: 'mypageseller_test' });
+});
 
 
 module.exports = router;
