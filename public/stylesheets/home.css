@@ -1,5 +1,5 @@
-        @import url('https://fonts.googleapis.com/css?family=Pacifico');
-        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
         .test01 {
             height: 450px;
             width: 1125px;
@@ -126,7 +126,13 @@
             width: 140px !important;
         }
 
-
+        .f3 {
+            float: left;
+            height: 100px;
+            width: 1127px;
+            padding:20px 220px;
+        
+        }
 
 
 
@@ -169,18 +175,7 @@
             padding: 0px 20px;
             text-align: right;
         }
-        .f3 {
-            float: left;
-            height: 200px;
-            width: 33.3%;
-            padding: 10px 0px;
-        }
-
-        .f3btn {
-            padding: 10px 80px;
-            height: 100px;
-        }
-
+     
         .mySlides {
             display: none;
             height: 97.5%;

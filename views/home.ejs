@@ -7,361 +7,12 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home.css">
     <link rel="stylesheet" type="text/css" href="dist/semantic.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="dist/semantic.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Pacifico');
-        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
-        .test01 {
-            height: 450px;
-            width: 1125px;
-            text-align: center;
-        }
-
-        .imgsize {
-            width: 50px;
-            height: 50px;
-        }
-
-        .login {
-            float: right;
-        }
-
-        .title {
-            text-align: center;
-        }
-
-        .rect {
-            margin: 0 auto;
-            width: 85%;
-        }
-
-        .toptool {
-            height: 40px;
-            margin: 20px;
-        }
-
-        .centertool {
-            margin: 10px 105px !important;
-            height: 60%;
-            width: 99.9%;
-        }
-
-
-
-
-
-        body>.grid {
-            height: 100%;
-        }
-
-        .image {
-            margin-top: -100px;
-        }
-
-        .column {
-            max-width: 450px;
-        }
-
-        header {
-            height: 20%;
-            margin-top: 20px;
-        }
-
-        #fleas {
-            font-family: 'Pacifico', cursive;
-            font-size: 60px;
-            font-weight: 400;
-            margin-top: 35px;
-        }
-
-        #head_top {
-            text-align: right;
-        }
-
-        .market_img {
-            width: 80px;
-        }
-
-        #main_logo {
-            display: -webkit-box;
-            width: 300px;
-            height: 50%;
-            margin: 0 auto;
-        }
-
-        .item {
-            box-sizing: border-box !important;
-        }
-
-        #join_button {
-            /* background-color: #e65680; */
-            margin-top: 30px;
-        }
-
-        .button {
-            background-color: #a8c2d4 !important;
-        }
-
-        #title {
-            border-bottom: 0.5px solid #dededf;
-            margin: 60px 20px;
-            padding-bottom: 13px;
-            font-weight: normal;
-        }
-
-        .application {
-            border: 1px solid #22242626;
-            background-color: #f3f4f5;
-            margin: 0 100px;
-            padding: 50px;
-        }
-
-        .form {
-            width: 350px;
-            margin: 0 auto;
-        }
-
-        #conall {
-            height: 100%;
-        }
-
-        #sample6_postcode {
-            width: 165px !important;
-        }
-
-        .date {
-            width: 160px !important;
-        }
-
-        .time {
-            width: 140px !important;
-        }
-
-
-
-
-
-
-        .application {
-            border: 1px solid #22242626;
-            background-color: #f3f4f5;
-            margin: 0 100px;
-            padding: 50px;
-        }
-
-        .bottomtool {
-            margin: 15px 0.5px !important;
-            height: 60%;
-            width: 99.9%;
-        }
-
-        .f1 {
-            float: left;
-            width: 33.3%;
-            padding: 10px 0px;
-        }
-
-        .f1img {
-            padding: 10px 10px;
-        }
-
-        .pposter {
-            width: 48%;
-            height: 50%;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            padding: 0px 9px;
-            width: 300px;
-        }
-
-        .subplus {
-            padding: 0px 20px;
-            text-align: right;
-        }
-
-        .f2 {
-            float: left;
-            width: 33.3%;
-            padding: 10px 0px;
-        }
-
-        .f3 {
-            float: left;
-            height: 200px;
-            width: 33.3%;
-            padding: 10px 0px;
-        }
-
-        .f3btn {
-            padding: 10px 80px;
-            height: 100px;
-        }
-
-        .mySlides {
-            display: none;
-            height: 97.5%;
-            width: 117.8%;
-        }
-
-        /* Slideshow container */
-
-        .slideshow-container {
-            position: relative;
-            margin: 10px 0.5px !important;
-            height: 60%;
-            width: 99.9%;
-        }
-
-        /* Next & previous buttons */
-
-        .prev,
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-        }
-
-        /* Position the "next button" to the right */
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Caption text */
-
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Number text (1/3 etc) */
-
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* The dots/bullets/indicators */
-        
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active,
-        .dot:hover {
-            background-color: #717171;
-        }
-
-        /* Fading animation */
-
-        .fade {
-            -webkit-animation-name: fade;
-            -webkit-animation-duration: 1.5s;
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @-webkit-keyframes fade {
-            from {
-                opacity: .4
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes fade {
-            from {
-                opacity: .4
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        /* On smaller screens, decrease text size */
-
-        @media only screen and (max-width: 300px) {
-            .prev,
-            .next,
-            .text {
-                font-size: 11px
-            }
-        }
-    </style>
-
-    <script>
-        $(document).ready(function() {
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            slides[0].style.display = "block";
-            dots[0].className += " active";
-        });
-        
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
+    <script src="javascripts/home.js"></script>
 </head>
 
 <body>
@@ -388,7 +39,14 @@
                 <a class="item">마이페이지</a>
             </div>
         </header>
-
+        <div class="f3">
+                    <button class="ui pink button" style="  height: 60px;
+                        width: 300px; float: left; background-color: #FF8D87 !important;">마켓등록</button>
+               
+                    <button class="ui pink button" style="  height: 60px;
+                        width: 300px; float: right;  background-color: #FF8D87 !important;">셀러신청</button>
+               
+            </div>
 
         <div class="slideshow-container">
 
@@ -411,7 +69,6 @@
                 <div class="numbertext">4 / 4</div>
                 <img src="images/test04.jpg" class="test01">
             </div>
-            <!-- style="width:100%" -->
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -467,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="f2">
+            <div class="f1">
                 <div class="subtitle">공지사항</div>
                 <div class="subplus">+더보기</div>
                 <div>text1</div>
@@ -475,16 +132,7 @@
                 <div>text3</div>
                 <div>text4</div>
             </div>
-            <div class="f3">
-                <div class="f3btn">
-                    <button class="ui pink button" style="  height: 60px;
-                        width: 230px; background-color: #FF8D87 !important;">마켓등록</button>
-                </div>
-                <div class="f3btn">
-                    <button class="ui pink button" style="  height: 60px;
-                        width: 230px; background-color: #FF8D87 !important;">셀러신청</button>
-                </div>
-            </div>
+            
 
 
         </div>
