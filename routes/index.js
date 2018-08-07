@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/form_seller', function(req, res) {
+router.get('/formseller', function(req, res) {
   res.render('form_seller', { title: 'sellerform_test' });
 });
 
