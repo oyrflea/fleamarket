@@ -31,6 +31,10 @@ router.get('/notice', function(req, res, next) {
   res.render('notice', { title: 'Express' });
 });
 
+router.get('/writenotice', function(req, res, next) {
+  res.render('form_notice', { title: 'Express' });
+});
+
 router.get('/review', function(req, res, next) {
   res.render('review', { title: 'Express' });
 });

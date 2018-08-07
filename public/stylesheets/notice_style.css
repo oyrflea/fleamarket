@@ -15,15 +15,24 @@
 table{
     text-align: center !important;
 }
-.application{
-    border:1px solid #22242626;
-    background-color:#f3f4f5;
-    margin: 0 100px 100px 100px;
-    padding: 50px;
-}
 #writebtn{
     background-color: #a8c2d4;
 }
-#list_num{
+#page_num{
     text-align: center;
+    margin-top: 5px;
+    word-spacing: 5px;
+}
+#page_num span{
+    cursor: pointer;
+}
+.thr{
+    width: 33%;
+}
+#not_foot{
+    width: 100%;
+    display: inline-flex;
+}
+#wb{
+    text-align: right;
 }
