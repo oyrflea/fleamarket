@@ -11,149 +11,162 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="dist/semantic.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Pacifico');
+        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
+
+        body>.grid {
+            height: 100%;
+        }
+
+        .image {
+            margin-top: -100px;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
+        header {
+            height: 20%;
+            margin-top: 20px;
+        }
+
+        #fleas {
+            font-family: 'Pacifico', cursive;
+            font-size: 60px;
+            font-weight: 400;
+            margin-top: 35px;
+        }
+
+        #head_top {
+            text-align: right;
+        }
+
+        .market_img {
+            width: 80px;
+        }
+
+        #main_logo {
+            display: -webkit-box;
+            width: 300px;
+            height: 50%;
+            margin: 0 auto;
+        }
+
+        .item {
+            box-sizing: border-box !important;
+        }
+
+        #join_button {
+            /* background-color: #e65680; */
+            margin-top: 30px;
+        }
+
+        .button {
+            background-color: #a8c2d4 !important;
+        }
+
+        #title {
+            border-bottom: 0.5px solid #dededf;
+            margin: 60px 20px;
+            padding-bottom: 13px;
+            font-weight: normal;
+        }
+
+        .application {
+            border: 1px solid #22242626;
+            background-color: #f3f4f5;
+            margin: 0 100px;
+            padding: 50px;
+        }
+
+        .form {
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        #conall {
+            height: 100%;
+        }
+
+        #sample6_postcode {
+            width: 165px !important;
+        }
+
+        .date {
+            width: 160px !important;
+        }
+
+        .time {
+            width: 140px !important;
+        }
+
+        .centertool {
+            height: 80%;
+            margin-top: 20px;
+            border: 1px solid #22242626;
+            background-color: #f3f4f5;
+        }
+
+        .toptool {
+            padding: 50px 170px;
+            display: inline-block;
+        }
+
+        .propicture {
+
+            border-radius: 50%;
+            height: 220px;
+            width: 230px;
+        }
+
+        .btnprofile {
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            background-color: #fafafa;
+            margin-right: 85px;
+            margin-left: 100px;
+        }
+
+        .profilename {
+            float: right;
+        }
+
+        .name {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .company {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+
+        .goods {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+
+        .memo {
+            font-size: 18px;
+            line-height: 1.5em;
+            margin-top: 35px;
+        }
+
+        .menutool {
+            border-top: 2px solid #efefef;
+            margin-top: 45px;
+            text-align: center;
+        }
+    </style>
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Pacifico');
-    @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
 
-    body>.grid {
-        height: 100%;
-    }
-
-    .image {
-        margin-top: -100px;
-    }
-
-    .column {
-        max-width: 450px;
-    }
-
-    header {
-        height: 20%;
-        margin-top: 20px;
-    }
-
-    #fleas {
-        font-family: 'Pacifico', cursive;
-        font-size: 60px;
-        font-weight: 400;
-        margin-top: 35px;
-    }
-
-    #head_top {
-        text-align: right;
-    }
-
-    .market_img {
-        width: 80px;
-    }
-
-    #main_logo {
-        display: -webkit-box;
-        width: 300px;
-        height: 50%;
-        margin: 0 auto;
-    }
-
-    .item {
-        box-sizing: border-box !important;
-    }
-
-    #join_button {
-        /* background-color: #e65680; */
-        margin-top: 30px;
-    }
-
-    .button {
-        background-color: #a8c2d4 !important;
-    }
-
-    #title {
-        border-bottom: 0.5px solid #dededf;
-        margin: 60px 20px;
-        padding-bottom: 13px;
-        font-weight: normal;
-    }
-
-    .application {
-        border: 1px solid #22242626;
-        background-color: #f3f4f5;
-        margin: 0 100px;
-        padding: 50px;
-    }
-
-    .form {
-        width: 350px;
-        margin: 0 auto;
-    }
-
-    #conall {
-        height: 100%;
-    }
-
-    #sample6_postcode {
-        width: 165px !important;
-    }
-
-    .date {
-        width: 160px !important;
-    }
-
-    .time {
-        width: 140px !important;
-    }
-
-    .centertool {
-        height: 80%;
-        margin-top: 20px;
-    }
-    .toptool{
-        padding: 65px 100px;
-    display: inline-block;
-    }
-    .propicture{
-       
-    border-radius: 50%;
-    height: 220px;
-    width: 230px;
-    }
-    .btnprofile{
-        border: 0;
-    cursor: pointer;
-    padding: 0;
-    background-color: #fafafa;
-    margin-right: 85px;
-    }
-    .profilename{
-        float: right;
-    }
-   .name{
-       font-size: 28px;
-           line-height: 1.5em;
-    margin-top: 10px;
-    display: inline-block;
-   }
-   .company{
-       font-size: 28px;
-       line-height: 1.5em;
-    margin-top: 10px;
-   }
-   .goods{
-       font-size: 28px;
-       line-height: 1.5em;
-    margin-top: 10px;
-   }
-   .memo{
-       font-size: 18px;
-       line-height: 1.5em;
-       margin-top: 35px;
-   }
-   .menutool{
-    border-top: 2px solid #efefef;
-    margin-top: 45px;
-    text-align: center;
-   }
-</style>
 
 
 <body>
@@ -184,36 +197,32 @@
 
         <div class="centertool">
             <div class="toptool">
-
                 <button class="btnprofile">
-                        <img src="images/p1.jpg" class="propicture">
-                </button>                   
-                <div class="profilename">   
+                    <img src="images/p1.jpg" class="propicture">
+                </button>
+                <div class="profilename">
                     <div>
-                            <div class="name">jieun</div>
-                            <div class="ui label">
-                                    <i class="mail icon"></i></div>                
-                    
-                    <div class="company">OpenYearRound</div>
-                    <div class="goods">아이스크림</div>
-                    <div class="memo">맛있어요~ 놀러오세요</div>
+                        <div class="name">jieun</div>
+                        <div class="ui label">
+                            <i class="mail icon"></i>
+                        </div>
+
+                        <div class="company">OpenYearRound</div>
+                        <div class="goods">아이스크림</div>
+                        <div class="memo">맛있어요~ 놀러오세요</div>
+                    </div>
                 </div>
-
             </div>
+        </div>
 
-           <div class="menutool">
-               <a class="">게시물</a>
-               <a class="">게시물</a>
-               <a class="">게시물</a>
+        <div class="menutool">
+            <a class="">게시물</a>
+            <a class="">게시물</a>
+            <a class="">게시물</a>
 
-           </div>
         </div>
 
 
-
-
-
-    </div>
 </body>
 
 </html>
