@@ -47,5 +47,13 @@ router.get('/mypageseller', function(req, res) {
   res.render('mypageseller', { title: 'mypageseller_test' });
 });
 
+router.get('/market', function(req, res) {
+  res.render('market', { title: 'mypageseller_test' });
+});
+
+router.get('/seller', function(req, res) {
+  res.render('seller', { title: 'mypageseller_test' });
+});
+
 
 module.exports = router;

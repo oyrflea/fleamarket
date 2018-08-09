@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="images/store.ico">
     <link rel='stylesheet' href='stylesheets/common_style.css' />
     <link rel='stylesheet' href='stylesheets/form_style.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link rel="stylesheet" type="text/css" href="dist/semantic.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
@@ -115,10 +117,9 @@
                 </div>
                 <div class="field">
                     <label>일시</label>
-                    <input type="date" class="date" vlaue="">
-                    <input type="time" class="time" value="00:00:00">부터
-                    <input type="date" class="date" value="">
-                    <input type="time" class="time" value="00:00:00">까지
+                    <input type="text" class="inputdate" placeholder="날짜 선택">
+                    <input type="text" class="inputtime" placeholder="오픈 시간">
+                    <input type="text" class="inputtime" placeholder="마감 시간">
                 </div>
                 <div class="field">
                     <label>참가 비용</label>
@@ -136,6 +137,20 @@
                 <div id="form_btn" class="ui fluid large submit button">등록</div>
             </form>
         </div>
+
+        <script>
+            flatpickr(".inputdate", {
+                minDate: "today",
+                mode: "range"
+            });
+
+            flatpickr(".inputtime", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true
+            });
+        </script>
 
 </body>
 

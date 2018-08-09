@@ -2,216 +2,102 @@
 <html>
 
 <head>
-    <meta chatset="utf-8">
-    <title>FLEAS</title>
-    <link rel="shortcut icon" href="images/store.ico">
-    <link rel='stylesheet' href='stylesheets/common_style.css' />
-    <link rel="stylesheet" type="text/css" href="dist/semantic.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
-    <script src="dist/semantic.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
+  <% include partials/head %>
+  <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script src="/javascripts/image-resize.min.js"></script>
+  <script src="/javascripts/write.js"></script>
+  <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="main ui container" id="all">
-        <!-- 통일된 상단 메뉴 -->
-        <header>
-            <div id="head_top">
-                <a href="login">로그인</a>
-            </div>
-
-            <a href="home" id="main_logo">
-                <img class="market_img" src="images/market.png" alt="market icon">
-                <div id="fleas">
-                    Fleas
-                </div>
-                <img class="market_img" src="images/market.png" alt="market icon">
-            </a>
-
-            <div class="ui five item menu">
-                <a href="market" class="item">플리마켓</a>
-                <a href="seller" class="item">셀러</a>
-                <a href="notice" class="active item">공지사항</a>
-                <a href="review" class="item">리뷰</a>
-                <a href="mypage" class="item">마이페이지</a>
-            </div>
-        </header>
-
-        <div>
-            <h2 id="title">
-                공지사항
-            </h2>
-        </div>
-
-        <div class="application">
-            <div id="app">
-                <v-app id="inspire">
-                  <v-card>
-                    <v-card-title>
-                      Nutrition
-                      <v-spacer></v-spacer>
-                      <v-text-field
-                        append-icon="search"
-                        label="Search"
-                        single-line
-                        hide-details
-                        v-model="search"
-                      ></v-text-field>
-                    </v-card-title>
-                    <v-data-table
-                                  v-model="selected"
-                      :headers="headers"
-                      :items="items"
-                      :search="search" 
-                                  
-                    >
-                      <template slot="items" slot-scope="props">
-                        <tr @click="showAlert(props.item)">
-                        <td>{{ props.item.name }}</td>
-                        <td class="text-xs-right">{{ props.item.calories }}</td>
-                        <td class="text-xs-right">{{ props.item.fat }}</td>
-                        <td class="text-xs-right">{{ props.item.carbs }}</td>
-                        <td class="text-xs-right">{{ props.item.protein }}</td>
-                        <td class="text-xs-right">{{ props.item.iron }}</td>
-                          </tr>
-                      </template>
-                      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-                        Your search for "{{ search }}" found no results.
-                      </v-alert>
-                    </v-data-table>
-                  </v-card>
-                </v-app>
-              </div>
-        </div>
+  <header>
+    <% include partials/header %>
+      <% include partials/breadcrumb %>
+  </header>
+  <main id="main">
+    <img class="introImageBoard" src="/images/background5.jpg" />
+    <div class="ui container">
+      <div id="title" style="margin-bottom : 20px;"></div>
+      <div id="editor" style="height: 300px;"></div>
+      <div class="ui clearing segment">
+        <form action="http://openyearround.co.kr/upload" method="post" enctype="multipart/form-data" id="submitWithButton">
+          <label for="file" class="ui icon button">
+            <i class="file icon"></i> Add File</label>
+          <input type="file" id="file" name="userfile" style="display:none">
+        </form>
+      </div>
+      <button class="ui right floated primary basic button" id="saveButton">작성 완료</button>
     </div>
+  </main>
+  <footer>
+    <% include partials/footer %>
+  </footer>
 
-    <script>
-    new Vue({
-  el: '#app',
-    methods: {
-    showAlert(a){
-      if (event.target.classList.contains('btn__content')) return;
-      alert('Alert! \n' + a.name);
-    }
-  },
-  data () {
-    return {
-      selected:[],
-      search: '',
-      headers: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'left',
-          sortable: false,
-          value: 'name'
-        },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' }
-      ],
-      items: [
-        {
-          value: false,
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%'
-        },
-        {
-          value: false,
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%'
-        },
-        {
-          value: false,
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%'
-        },
-        {
-          value: false,
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%'
-        },
-        {
-          value: false,
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: '16%'
-        },
-        {
-          value: false,
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: '0%'
-        },
-        {
-          value: false,
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%'
-        },
-        {
-          value: false,
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%'
-        },
-        {
-          value: false,
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%'
-        },
-        {
-          value: false,
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%'
+  <script>
+  $('body').ready(function () {
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+      
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+      
+        ['clean'],                                         // remove formatting button
+        ['image']
+    ];
+
+      
+    var quillTitle = new Quill('#title', {
+        theme: 'snow',
+        placeholder : '제목을 입력해주세요',
+        modules: {
+            toolbar: false
+          }
+    });
+
+    var quillContent = new Quill('#editor', {
+        theme: 'snow',
+        placeholder : '내용을 입력해주세요',
+        modules:{
+            toolbar : toolbarOptions,
+            imageResize: {
+                displaySize: true
+              }
         }
-      ]
-    }
-  }
-})
-    </script>
+    });
+
+    $('#saveButton').click(()=>{
+        var board = window.location.pathname;
+        board = board.split('/')[1];
+
+        $.ajax({
+            method: "POST",
+            url: "/write",
+            data: {
+              board : board,
+              title : quillTitle.getText(),
+              content : JSON.stringify(quillContent.getContents())
+            }
+          }).done(function (value) {
+            $('#submitWithButton').append(addFormData('updateId',value.id));
+            $('#submitWithButton').append(addFormData('board',board));
+            $('#submitWithButton').submit();
+            // location.href = '/' + board;
+          }); 
+    });
+    window.a = quillContent;
+});
+
+function addFormData(name,value){
+    return '<input type="hidden" name="'+ name +'" value="'+ value +'">';
+}
+  </script>
 </body>
 
 </html>

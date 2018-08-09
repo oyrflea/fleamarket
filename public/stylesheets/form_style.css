@@ -14,12 +14,12 @@
     width: 350px;
     margin: 0 auto;
 }
-.date{
-    width: 160px !important;
-}
-.time{
-    width: 140px !important;
+.inputtime{
+    width: 173px !important;
 }
 #sample6_postcode{
     width: 165px !important;
+}
+input{
+    margin:2px 0 !important;
 }
