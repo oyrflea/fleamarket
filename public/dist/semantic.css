@@ -7839,7 +7839,7 @@ i.small.icons {
 
 i.icon,
 i.icons {
-  font-size: 1em;
+  font-size: 2em;
 }
 
 i.large.icon,
@@ -14487,7 +14487,6 @@ a.ui.label {
 
 .ui.label > .icon {
   width: auto;
-  margin: 0em 0.75em 0em 0em;
 }
 
 /* Detail */
