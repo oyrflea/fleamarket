@@ -1,0 +1,184 @@
+      @import url('https://fonts.googleapis.com/css?family=Pacifico');
+        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff');
+
+        body>.grid {
+            height: 100%;
+        }
+
+        .image {
+            margin-top: -100px;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
+        header {
+            height: 20%;
+            margin-top: 20px;
+        }
+
+        #fleas {
+            font-family: 'Pacifico', cursive;
+            font-size: 60px;
+            font-weight: 400;
+            margin-top: 35px;
+        }
+
+        #head_top {
+            text-align: right;
+        }
+
+        .market_img {
+            width: 80px;
+        }
+
+        #main_logo {
+            display: -webkit-box;
+            width: 300px;
+            height: 50%;
+            margin: 0 auto;
+        }
+
+        .item {
+            box-sizing: border-box !important;
+        }
+
+        #join_button {
+            /* background-color: #e65680; */
+            margin-top: 30px;
+        }
+
+        .button {
+            background-color: #a8c2d4 !important;
+        }
+
+        #title {
+            border-bottom: 0.5px solid #dededf;
+            margin: 60px 20px;
+            padding-bottom: 13px;
+            font-weight: normal;
+        }
+
+        .application {
+            border: 1px solid #22242626;
+            background-color: #f3f4f5;
+            margin: 0 100px;
+            padding: 50px;
+        }
+
+        .form {
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        #conall {
+            height: 100%;
+        }
+
+        #sample6_postcode {
+            width: 165px !important;
+        }
+
+        .date {
+            width: 160px !important;
+        }
+
+        .time {
+            width: 140px !important;
+        }
+        a{
+    color: black;
+    text-decoration: none;
+}
+
+        .centertool {
+            height: 45%;
+            margin-top: 20px;
+            border: 1px solid #22242626;
+            background-color: #f3f4f5;
+        }
+
+        .toptool {
+            padding: 50px 100px;
+            display: inline-block;
+            margin-bottom: 44px;
+        }
+
+        .propicture {
+            border-radius: 50%;
+            height: 220px;
+            width: 230px;
+        }
+
+        .btnprofile {
+            border: 0;
+            cursor: pointer;
+            padding: 0;
+            background-color: #f3f4f5;
+            margin-right: 120px;
+            margin-left: 40px;
+        }
+
+        .profilename {
+            float: right;
+        }
+
+        .name {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .company {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+
+        .goods {
+            font-size: 28px;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+
+        .memo {
+            font-size: 18px;
+            line-height: 1.5em;
+            margin-top: 35px;
+        }
+
+        .menutool {
+            border-top: 1px solid #efefef;
+            text-align: center;
+            width: 1127px;
+            height: 52px;
+        }
+
+        .menu2t {
+            margin-right: 60px;
+            border-top: 1px solid #262626;
+            height: 52px;
+        }
+        .nmenu2t{
+            margin-right: 60px;     
+            height: 52px;
+        }
+
+        .boardtool {
+            flex-direction: column;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            width: 1127px;
+    height: 65%;
+        }
+        .picturetool{
+            text-align: center;
+            list-style: none;
+        }
+        .pposter {
+            padding: 30px 10px;
+    width: 30%;
+    height: 30%;
+}
