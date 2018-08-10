@@ -46,6 +46,18 @@ router.get('/test', function(req, res, next) {
 router.get('/mypageseller', function(req, res) {
   res.render('mypageseller', { title: 'mypageseller_test' });
 });
+router.get('/mypageseller_good', function(req, res) {
+  res.render('mypageseller_good', { title: 'mypageseller_good_test' });
+});
+
+router.get('/mypageseller_participate', function(req, res) {
+  res.render('mypageseller_participate', { title: 'mypageseller_participate_test' });
+});
+
+router.get('/mypageseller_apply', function(req, res) {
+  res.render('mypageseller_apply', { title: 'mypageseller_apply_test' });
+});
+
 
 
 module.exports = router;
