@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#search{
+    border-bottom:0.5px solid #dededf;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.find{
+    width: 35% !important;
+    vertical-align: middle !important;
+    margin:0 5px 10px 0px !important;
+}
+.find2{
+    width: 50% !important;
+}
+#search_btn{
+    background-color: #a8c2d4;
+    vertical-align: top;
+    margin:2px 0 0 10px;
+}
