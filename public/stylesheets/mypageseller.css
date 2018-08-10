@@ -156,16 +156,18 @@
             height: 52px;
         }
 
-        .menu2t {
-            margin-right: 60px;
+        .menutop{
             border-top: 1px solid #262626;
-            height: 52px;
-        }
-        .nmenu2t{
-            margin-right: 60px;     
-            height: 52px;
         }
 
+        .menu2t {
+            margin-right: 60px;            
+            height: 52px;
+            height: 52px;
+    font-size: 19px;
+    margin-top: 5px;
+        }
+        
         .boardtool {
             flex-direction: column;
             padding-bottom: 0px;
