@@ -33,8 +33,8 @@
       </a>
 
       <div class="ui five item menu">
-        <a href="market" class="active item">플리마켓</a>
-        <a href="seller" class="item">셀러</a>
+        <a href="market" class="item">플리마켓</a>
+        <a href="seller" class="active item">셀러</a>
         <a href="notice" class="item">공지사항</a>
         <a href="review" class="item">리뷰</a>
         <a href="mypage" class="item">마이페이지</a>
@@ -58,32 +58,17 @@
         <button class="ui button" id="search_btn">검색</button>
       </form>
 
+      <div id="page_num">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+      </div>
     </div>
 
-
   </div>
-  <script>
-    flatpickr(".inputdate", {
-      minDate: "today"
-    });
 
-    $('.ui.dropdown')
-      .dropdown()
-      ;
-    $('#search-select')
-      .dropdown()
-      ;
-
-    $('#multi-select')
-      .dropdown()
-      ;
-    $('.ui.normal.dropdown')
-      .dropdown({
-        maxSelections: 3
-      })
-      ;
-
-  </script>
 </body>
 
 </html>

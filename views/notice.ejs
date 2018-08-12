@@ -6,6 +6,7 @@
   <title>FLEAS</title>
   <link rel="shortcut icon" href="images/store.ico">
   <link rel='stylesheet' href='stylesheets/common_style.css' />
+  <link rel='stylesheet' href='stylesheets/market.css' />
   <link rel='stylesheet' href='stylesheets/notice_style.css' />
   <link rel="stylesheet" type="text/css" href="dist/semantic.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -48,7 +49,15 @@
     </div>
 
     <div class="application">
-      <div>검색</div>
+      <form class="ui form" id="search">
+
+        <div class="ui icon input find">
+          <input type="text" placeholder="Search...">
+          <i class="search icon"></i>
+        </div>
+
+        <button class="ui button" id="search_btn">검색</button>
+      </form>
 
       <table class="ui selectable table">
         <thead>
