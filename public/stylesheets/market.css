@@ -18,3 +18,32 @@
     vertical-align: top;
     margin:2px 0 0 10px;
 }
+.elem{
+    width: 20%;
+    padding: 13px;
+}
+.elem img{
+    width:100%;
+}
+ul{
+    list-style: none;
+    padding:1px;
+    font-size: 12px;
+}
+li{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+#article{
+    margin-top: 20px;
+    display:-webkit-box;
+}
+#page_num{
+    text-align: center;
+    margin-top: 5px;
+    word-spacing: 5px;
+}
+#page_num span{
+    cursor: pointer;
+}
