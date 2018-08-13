@@ -18,3 +18,11 @@
     vertical-align: top;
     margin:2px 0 0 10px;
 }
+#page_num{
+    text-align: center;
+    margin-top: 5px;
+    word-spacing: 5px;
+}
+#page_num span{
+    cursor: pointer;
+}
