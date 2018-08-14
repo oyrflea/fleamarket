@@ -84,15 +84,17 @@
                 <button class="ui button" id="search_btn">검색</button>
             </form>
 
-            <div id="article">
-                <div class="elem">
-                    <img src="images/pp2.jpg">
-                    <ul>
-                        <li>[합정] 후리후리한 후리마켓</li>
-                        <li>2018-08-12</li>
-                        <li>작성자</li>
-                    </ul>
-                </div>
+            <div>
+                    <div id="article">
+                        <div class="elem">
+                            <img src="images/pp2.jpg">
+                            <ul>
+                                <li>[합정] 후리후리한 후리마켓</li>
+                                <li>2018-08-12</li>
+                                <li>작성자</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
 
             <div id="page_num">
@@ -129,7 +131,7 @@
 
         var original = document.getElementById('article');
         var clone = original.innerHTML;
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 10; i++) {
             original.innerHTML += clone;
         }
 
