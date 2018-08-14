@@ -6,7 +6,7 @@
   <title>FLEAS</title>
   <link rel="shortcut icon" href="images/store.ico">
   <link rel='stylesheet' href='stylesheets/common_style.css' />
-  <link rel='stylesheet' href='stylesheets/market.css' />
+  <link rel='stylesheet' href='stylesheets/seller.css' />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" type="text/css" href="dist/semantic.css">
@@ -49,14 +49,92 @@
 
     <div class="application">
       <form class="ui form" id="search">
+        <div>
+          <select class="find2 ui search normal selection dropdown" multiple="" id="multi-select">
+            <option value="">아이템 선택</option>
+            <option value="MC">마카롱</option>
+            <option value="WM">액체괴물</option>
+            <option value="PJ">파우치ㆍ지갑</option>
+            <option value="NS">천연비누</option>
+            <option value="SC">수제청</option>
+            <!-- Saving your scroll sanity !-->
+            <option value="AC">악세사리</option>
+            <option value="CL">옷</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
 
-        <div class="ui icon input find">
+
+
+        <div class="ui input find">
           <input type="text" placeholder="Search...">
-          <i class="search icon"></i>
         </div>
 
         <button class="ui button" id="search_btn">검색</button>
       </form>
+      <div>
+        <div>
+          <div class="itemtype">
+            <div class="line"></div>
+            <span>악세사리</span>
+            <div class="line"></div>
+          </div>
+
+
+          <div class="more">
+            <a href="">더보기</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="itemtype">
+            <div class="line"></div>
+            <span>액체괴물</span>
+            <div class="line"></div>
+          </div>
+
+          <div class="more">
+            <a href="">더보기</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="itemtype">
+            <div class="line"></div>
+            <span>수제청</span>
+            <div class="line"></div>
+          </div>
+
+          <div class="more">
+            <a href="">더보기</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="itemtype">
+            <div class="line"></div>
+            <span>마카롱</span>
+            <div class="line"></div>
+          </div>
+
+          <div class="more">
+            <a href="">더보기</a>
+          </div>
+        </div>
+
+      </div>
 
       <div id="page_num">
         <span>1</span>
@@ -68,7 +146,28 @@
     </div>
 
   </div>
+  <script>
+    flatpickr(".inputdate", {
+      minDate: "today"
+    });
 
+    $('.ui.dropdown')
+      .dropdown()
+      ;
+    $('#search-select')
+      .dropdown()
+      ;
+
+    $('#multi-select')
+      .dropdown()
+      ;
+    $('.ui.normal.dropdown')
+      .dropdown({
+        maxSelections: 3
+      })
+      ;
+
+  </script>
 </body>
 
 </html>

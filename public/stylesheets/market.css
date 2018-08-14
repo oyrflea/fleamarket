@@ -19,7 +19,8 @@
     margin:2px 0 0 10px;
 }
 .elem{
-    width: 20%;
+    display:inline-block;
+    width: 19.5%;
     padding: 13px;
 }
 .elem img{

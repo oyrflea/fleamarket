@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+#search{
+    border-bottom:0.5px solid #dededf;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.find{
+    width: 35% !important;
+    vertical-align: middle !important;
+    margin:12px 5px 0 0 !important;
+}
+.find2{
+    width: 53% !important;
+}
+#search_btn{
+    background-color: #a8c2d4;
+    vertical-align: top;
+    margin:12px 0 0 10px;
+}
+#page_num{
+    text-align: center;
+    margin-top: 5px;
+    word-spacing: 5px;
+}
+#page_num span{
+    cursor: pointer;
+}
+.line{
+    margin:15px 0;
+    width: 40%;
+    height: 1px;
+    background-color: #dededf;
+}
+.itemtype{
+    display: inline-flex;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+.itemtype span{
+    font-size: 17px;
+    color:#a8a8a8;
+    margin:5px;
+    width: 20%;
+}
+.more{
+    text-align: right;
+    font-size: 12px;
+}
