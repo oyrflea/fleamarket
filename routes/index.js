@@ -66,6 +66,8 @@ router.get('/market', function(req, res) {
 router.get('/seller', function(req, res) {
   res.render('seller', { title: 'mypageseller_test' });
 });
-
+router.get('/board', function(req, res) {
+  res.render('board', { title: 'board_test' });
+});
 
 module.exports = router;
