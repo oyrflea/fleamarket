@@ -19,8 +19,9 @@
     margin:2px 0 0 10px;
 }
 .elem{
-    width: 20%;
-    padding: 13px;
+    display:inline-block;
+    width: 19%;
+    padding: 13px 0 0 3%;
 }
 .elem img{
     width:100%;
@@ -38,6 +39,7 @@ li{
 #article{
     margin-top: 20px;
     display:-webkit-box;
+    width: 100%;
 }
 #page_num{
     text-align: center;
