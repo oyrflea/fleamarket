@@ -48,5 +48,24 @@
     font-size: 12px;
 }
 .itempart{
-    height: 250px;
+    width: 100%;
+}
+.itemseller{
+    display:inline-block;
+    width: 20%;
+    margin: 2.3%;
+    cursor: pointer;
+}
+.itemseller img{
+    width:100%;
+}
+ul{
+    list-style: none;
+    padding:1px;
+    font-size: 12px;
+}
+li{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
 }

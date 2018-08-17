@@ -39,6 +39,10 @@ router.get('/review', function(req, res, next) {
   res.render('review', { title: 'Express' });
 });
 
+router.get('/writereview', function(req, res, next) {
+  res.render('form_review', { title: 'Express' });
+});
+
 router.get('/test', function(req, res, next) {
   res.render('test', { title: 'Express' });
 });

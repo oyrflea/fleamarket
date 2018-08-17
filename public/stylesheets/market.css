@@ -20,8 +20,9 @@
 }
 .elem{
     display:inline-block;
-    width: 19%;
-    padding: 13px 0 0 3%;
+    width: 16%;
+    margin: 13px 0 0 3%;
+    cursor: pointer;
 }
 .elem img{
     width:100%;

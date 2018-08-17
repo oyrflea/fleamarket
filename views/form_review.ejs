@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta chatset="utf-8">
+    <title>FLEAS</title>
+    <link rel="shortcut icon" href="images/store.ico">
+    <link rel='stylesheet' href='stylesheets/common_style.css' />
+    <link rel='stylesheet' href='stylesheets/form_notice_style.css' />
+    <link rel="stylesheet" type="text/css" href="dist/semantic.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="dist/semantic.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script type="text/javascript" href="javascripts/write_not.js"></script>
+</head>
+
+<body>
+    <div class="main ui container" id="all">
+        <!-- 통일된 상단 메뉴 -->
+        <header>
+            <div id="head_top">
+                <a href="login">로그인</a>
+            </div>
+
+            <a href="home" id="main_logo">
+                <img class="market_img" src="images/market.png" alt="market icon">
+                <div id="fleas">
+                    Fleas
+                </div>
+                <img class="market_img" src="images/market.png" alt="market icon">
+            </a>
+
+            <div class="ui five item menu">
+                <a href="market" class="item">플리마켓</a>
+                <a href="seller" class="item">셀러</a>
+                <a href="notice" class="item">공지사항</a>
+                <a href="review" class="active item">리뷰</a>
+                <a href="mypage" class="item">마이페이지</a>
+            </div>
+        </header>
+
+        <div>
+            <h2 id="title">
+                리뷰
+            </h2>
+        </div>
+
+
+        <div class="application">
+            <div id="title-container"></div>
+            <div id="editor-container"></div>
+
+            <div id="wb">
+                <button id="writebtn" class="ui button">등록</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var toolbarOptions = [
+            [{ header: [1, 2, false] }],
+            ['bold', 'italic', 'underline'],
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'align': [] }],
+            ['image']
+        ];
+
+        var quillTitle = new Quill('#title-container', {
+            theme: 'snow',
+            placeholder: '제목을 입력해주세요',
+            modules: {
+                toolbar: false
+            }
+        });
+
+        var quill = new Quill('#editor-container', {
+            theme: 'snow',
+            placeholder: '내용을 입력해주세요',
+            modules: {
+                toolbar: toolbarOptions
+            },
+        });
+    </script>
+</body>
+
+</html>
