@@ -1,16 +1,16 @@
 @charset "UTF-8";
 
 .notnum{
-    width: 100px;
+    width: 10%;
 }
 .nottitle{
-    width: 450px;
+    width: 60%;
 }
 .notuser{
-    width: auto;
+    width: 15%;
 }
 .notdate{
-    width: 130px;
+    width: 15%;
 }
 table{
     text-align: center !important;
@@ -20,7 +20,7 @@ table{
 }
 #page_num{
     text-align: center;
-    margin-top: 5px;
+    margin-top: 20px;
     word-spacing: 5px;
 }
 #page_num span{
@@ -35,4 +35,17 @@ table{
 }
 #wb{
     text-align: right;
+}
+.notpostitem{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+tbody tr td:nth-child(2){
+    text-align: left !important;
+    padding-left:5% !important;
+    cursor: pointer;
+}
+tbody tr td:nth-child(2):hover{
+    text-decoration: underline;
 }

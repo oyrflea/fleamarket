@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.right{
+    float:right;
+}
+#posttitle{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    width: 70%;
+}
+#posttop{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dededf;
+}
+.application p{
+    border: 1px solid #dededf;
+    background-color: #ffffff;
+    padding:3%;
+    margin:3%;
+
+}
+#postbottom button{
+    background-color: #a8c2d4;
+}
+#postbottom button:nth-child(3),button:nth-child(4){
+    float:right;
+}

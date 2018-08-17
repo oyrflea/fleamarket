@@ -35,12 +35,20 @@ router.get('/writenotice', function(req, res, next) {
   res.render('form_notice', { title: 'Express' });
 });
 
+router.get('/noticeitem', function(req, res, next) {
+  res.render('noticeitem', { title: 'Express' });
+});
+
 router.get('/review', function(req, res, next) {
   res.render('review', { title: 'Express' });
 });
 
 router.get('/writereview', function(req, res, next) {
   res.render('form_review', { title: 'Express' });
+});
+
+router.get('/reviewitem', function(req, res, next) {
+  res.render('reviewitem', { title: 'Express' });
 });
 
 router.get('/test', function(req, res, next) {
