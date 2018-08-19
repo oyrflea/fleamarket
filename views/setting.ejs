@@ -7,12 +7,12 @@
     <title>
         <%= title %>
     </title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/board.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/setting.css">
     <link rel="stylesheet" type="text/css" href="dist/semantic.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="dist/semantic.js"></script>
-    <script src="javascripts/home.js"></script>
+
 </head>
 
 <body>
@@ -40,25 +40,47 @@
             </div>
         </header>
 
-        <table>
-            <tr class="centertool">
-                <td class="picturetool">
-                    <img src="images/p4.jpg" class="imgtool">
-                </td>
-                <td class="testtool">
-                    <h1 class="titletext">제목</h1>
-                    <br>
-                    <br>
-                    <p>제가 직접 만든 팔찌입니다 많이 구경하러와주세요!!</p>
-                </td>
-            </tr>
-        </table>
+        <div>
+            <h2 id="title">
+                회원정보수정
+            </h2>
+        </div>
 
+        <div class="centertool">
+            <form class="ui form" style="margin-top:10%;">
+                <div class="field">
+                    <label>닉네임</label>
+                    <input type="text" name="id" placeholder="ID">
+                </div>
+                <div class="field">
+                    <label>업체명</label>
+                    <input type="password" name="password" placeholder="Company">
+                </div>
+                <div class="field">
+                    <label>상품</label>
+                    <input type="password" name="password" placeholder="Product">
+                </div>
+                <div class="field">
+                    <label>소개글</label>
+                    <input type="password" name="password" placeholder="Introduction">
+                </div>
 
-        <div class="ui fluid action input" style="margin-top: 20px;">
-            <input type="text" placeholder="comment" style="margin-bottom:20px;">
-            <div class="ui button" style=" background-color: #FF8D87 !important; margin-bottom:20px; color:white;">댓글달기</div>
+                <input type="submit" id="form_btn" class="ui fluid large submit button" value="확인" style="margin-top:20px;">
+            </form>
         </div>
 
 
+
+
+
+
+
+    </div>
+
+
+
+
+
 </body>
+
+</html>

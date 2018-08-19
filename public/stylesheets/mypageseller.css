@@ -49,9 +49,9 @@
             margin-top: 30px;
         }
 
-        .button {
+        /* .button {
             background-color: #a8c2d4 !important;
-        }
+        } */
 
         #title {
             border-bottom: 0.5px solid #dededf;
@@ -94,15 +94,16 @@
 
         .centertool {
             height: 45%;
+            width: 100%;
             margin-top: 20px;
+            margin-bottom: 30px;
             border: 1px solid #22242626;
             background-color: #f3f4f5;
         }
 
-        .toptool {
-            padding: 50px 100px;
-            display: inline-block;
-            margin-bottom: 44px;
+        .toptool {          
+            margin-bottom: 25px;
+            vertical-align:top;
         }
 
         .propicture {
@@ -112,16 +113,17 @@
         }
 
         .btnprofile {
-            border: 0;
-            cursor: pointer;
-            padding: 0;
-            background-color: #f3f4f5;
-            margin-right: 120px;
-            margin-left: 40px;
+            text-align: center;
+    padding: 40px 50px 40px 170px;
         }
 
         .profilename {
-            float: right;
+            padding: 40px 380px 40px 0px;
+        }
+        .icontool{
+            text-align:justify;
+                text-align: right;
+    padding-top: 60px;
         }
 
         .name {
@@ -176,12 +178,13 @@
             padding-bottom: 0px;
             padding-top: 0px;
             width: 1127px;
-    height: 65%;
+    height: 45%;
         }
         .picturetool{
             text-align: center;
             list-style: none;
-                margin-bottom: 30px;
+            margin-top: 15px;
+            margin-bottom: 30px;
         }
         .pposter {
             margin-right: 20px;
