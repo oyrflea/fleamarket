@@ -81,5 +81,7 @@ router.get('/seller', function(req, res) {
 router.get('/board', function(req, res) {
   res.render('board', { title: 'board_test' });
 });
-
+router.get('/setting', function(req, res) {
+  res.render('setting', { title: 'setting_test' });
+});
 module.exports = router;
