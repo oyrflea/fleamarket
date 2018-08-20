@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/message.css">
+    <link rel="stylesheet" type="text/css" href="dist/semantic.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="dist/semantic.js"></script>
+    <script src="javascripts/home.js"></script>
+</head>
+
+<body>
+    <div class="ui container" id="conall">
+
+        <header>
+            <div id="head_top">
+                <a href="login">로그인</a>
+            </div>
+
+            <div id="main_logo">
+                <img class="market_img" src="images/market.png" alt="market icon">
+                <div id="fleas">
+                    Fleas
+                </div>
+                <img class="market_img" src="images/market.png" alt="market icon">
+            </div>
+
+            <div class="ui five item menu">
+                <a href="/market" class="item">플리마켓</a>
+                <a href="/seller" class="item">셀러</a>
+                <a href="/notice" class="item">공지사항</a>
+                <a href="/review" class="item">리뷰</a>
+                <a href="/mypage" class="item">마이페이지</a>
+            </div>
+        </header>
+        <div class="maintool">
+            <div class="icontool">
+                <img class="ui avatar image" src="/images/market_on.png">
+                <span>Username</span>
+            </div>
+
+            <ul class="centertool">
+                <li class="ui visible message" style="float: left;
+                background-color: white;
+                clear: left;">
+                    <p>어서오세요.궁금한 내용이 있으시면 메시지를 남겨주세요</p>
+                </li>
+                
+                <li class="ui visible message" style="    float: right;
+                background-color: tan;
+                clear: right;">
+                    <p>배송언제되요?</p>
+                </li>
+                
+                <li class="ui visible message" style="float: left;
+                background-color: white;
+                clear: left;">
+                    <p>1주일 뒤 배송됩니다.</p>
+                </li>
+                
+                <li class="ui visible message" style="    float: right;
+                background-color: tan;
+                clear: right;">
+                    <p>감사합니다!!</p>
+                </li>
+                
+                <div class="ui fluid action input" style="    margin-top: 20px;
+                position: absolute;
+                height: 60px;
+                width: 100%;
+                bottom: 0;
+                left: 0;">
+                    <input type="text" placeholder="입력해주세요..." style="margin-bottom:20px;">
+                    <div class="ui button" style=" background-color: #FF8D87 !important; margin-bottom:20px; color:white;">보내기</div>
+                </div>
+            </ul>
+
+            <div class="icontool">
+                <img class="ui avatar image" src="/images/p8.jpg">
+                <span>Username</span>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</body>

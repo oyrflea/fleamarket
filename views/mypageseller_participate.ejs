@@ -19,7 +19,7 @@
 
         <header>
             <div id="head_top">
-                    <a href="login">로그인</a>
+                <a href="login">로그인</a>
             </div>
 
             <div id="main_logo">
@@ -40,61 +40,73 @@
         </header>
 
 
-        <div class="centertool">
-            <div class="toptool">
-                <button class="btnprofile">
+
+        <table class="centertool">
+            <tr class="toptool">
+
+                <td class="btnprofile">
                     <img src="images/p1.jpg" class="propicture">
-                </button>
-                <div class="profilename">
+                </td>
+
+                <td class="profilename">
                     <div>
                         <div class="name">jieun</div>
-                        <div class="ui label">
-                            <i class="mail icon"></i>
-                        </div>
-
                         <div class="company">OpenYearRound</div>
                         <div class="goods">아이스크림</div>
                         <div class="memo">맛있어요~ 놀러오세요</div>
                     </div>
-                </div>
-            </div>
+                </td>
 
-            <div class="menutool">
-                <a href="/mypageseller">
-                    <span class="nmenu2t">게시물</span>
-                </a>
-                <a href="/mypageseller_good">
-                    <span class="nmenu2t">좋아요</span>
-                </a>
-                <a href="/mypageseller_apply">
-                    <span class="nmenu2t">신청한 마켓</span>
-                </a>
-                <a href="/mypageseller_participate">
-                    <span class="menu2t">참가할 마켓</span>
-                </a>
-            </div>
+                <td class="icontool">
+                    <a href="/message" class="ui label" style="margin-bottom: 15px;">
+                        <i class="mail icon"></i>
+                    </a>
+
+                    <a class="ui label" style="margin-bottom: 15px;    width: 48px;">
+                        <i class="file icon"></i>
+                    </a>
+
+                    <a href="/setting" class="ui label" style="margin-bottom: 15px;    width: 48px;">
+                        <i class="icon settings"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="menutool">
+            <a href="/mypageseller">
+                <span class="nmenu2t">게시물</span>
+            </a>
+            <a href="/mypageseller_good">
+                <span class="nmenu2t">좋아요</span>
+            </a>
+            <a href="/mypageseller_apply">
+                <span class="nmenu2t">신청한 마켓</span>
+            </a>
+            <a href="/mypageseller_participate">
+                <span class="menu2t">참가할 마켓</span>
+            </a>
+        </div>
+
+        <table class="ui padded table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>마켓</th>
+                    <th>공고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>홍대놀이터프리마켓</td>
+                    <td>서울시 마포구 홍대놀이터 어딘가 오후12시~오후6시</td>
+                </tr>
+            </tbody>
+        </table>
 
 
-            <table class="ui padded table">
-                    <thead>
-                      <tr>
-                        <th>번호</th>
-                        <th>마켓</th>
-                        <th>공고</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>홍대놀이터프리마켓</td>
-                        <td>서울시 마포구 홍대놀이터 어딘가 오후12시~오후6시</td>
-                      </tr>                     
-                    </tbody>
-                  </table>
 
-
-
-            <!-- <script>
+        <!-- <script>
                 for (var i = 0; i < 3; i++) {
                     document.write('');
                     document.write('');
@@ -125,7 +137,7 @@
 
 
 
-            <!-- <div class="hmpicture">
+        <!-- <div class="hmpicture">
                     <div class="" onmouseover="mouseOver();" onmouseout="mouseOut();">
                         <div class="">
                             <div class="">
@@ -148,7 +160,7 @@
                 </ul>
             </div> -->
 
-        </div>
+    </div>
     </div>
 
     </div>

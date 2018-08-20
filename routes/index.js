@@ -84,4 +84,22 @@ router.get('/board', function(req, res) {
 router.get('/setting', function(req, res) {
   res.render('setting', { title: 'setting_test' });
 });
+router.get('/mypagehost', function(req, res) {
+  res.render('mypagehost', { title: 'mypagehost_test' });
+});
+router.get('/mypagehost_applier', function(req, res) {
+  res.render('mypagehost_applier', { title: 'mypagehost_applier_test' });
+});
+router.get('/mypageuser', function(req, res) {
+  res.render('mypageuser', { title: 'mypageuser_test' });
+});
+router.get('/mypageuser_good', function(req, res) {
+  res.render('mypageuser_good', { title: 'mypageuser_good_test' });
+});
+router.get('/message', function(req, res) {
+  res.render('message', { title: 'message_test' });
+});
+router.get('/form_board', function(req, res) {
+  res.render('form_board', { title: 'form_board_test' });
+});
 module.exports = router;

@@ -110,3 +110,11 @@ text-decoration: none;
 .nametool{
     margin-right: 70px;
 }
+.lefttool{
+   
+    border-right:1px solid red;
+     padding-right:12px; text-align:justify;
+}
+.righttool{
+    padding-left:10px;
+}

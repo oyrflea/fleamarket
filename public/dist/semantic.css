@@ -25322,6 +25322,7 @@ Floated Menu / Item
 
 .ui.visible.visible.visible.visible.message {
   display: block;
+      margin-bottom: 3em;
 }
 
 .ui.icon.visible.visible.visible.visible.message {
