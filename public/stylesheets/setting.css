@@ -75,7 +75,7 @@ header {
 #conall {
     height: 100%;
 }
-ㄴ
+
 #sample6_postcode {
     width: 165px !important;
 }
@@ -99,6 +99,11 @@ text-decoration: none;
     border: 1px solid #22242626;
     background-color: #f3f4f5;
 }
+.contenttool{
+    width: 92.2%;
+    height: 85%;
+    margin: 40px;
+}
 .settingtool{
     padding: 50px 100px;
     text-align: center;
@@ -111,10 +116,27 @@ text-decoration: none;
     margin-right: 70px;
 }
 .lefttool{
-   
-    border-right:1px solid red;
-     padding-right:12px; text-align:justify;
+    height: 57%;
+    width: 29%;
+    position: absolute;
+    padding: 35px;
+}
+.lefttitle{
+    display: block;
+    margin: 0em 0em 0.28571429rem 0em;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1.12857143em;
+    font-weight: bold;
+    text-transform: none;
 }
 .righttool{
-    padding-left:10px;
+    padding-left: 25px;
+    width: 50%;
+}
+.loading{
+    position:relative; 
+     color: black;
+     border: 0px solid black;
+      display: inline;
+      
 }
