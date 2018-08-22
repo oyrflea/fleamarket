@@ -4,9 +4,18 @@
     height: 375px;
     background-color: white;
 }
-#title-container{
+/* #title-container{
     background-color: white;
     margin-bottom: 20px;
+} */
+#titlebar{
+    margin-bottom: 20px;
+    padding:12px 15px;
+    width: 100%;
+    border:1px solid #ccc;
+    color:#000000de;
+    outline: none;
+    font-style: italic;
 }
 #writebtn{
     background-color: #a8c2d4;

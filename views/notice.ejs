@@ -68,84 +68,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td>1234</td>
             <td onclick="location.href='noticeitem'">Approveddgfgfgfggdddddddddddd dddddddddddddddd ddddddd</td>
             <td>성자</td>
             <td>2018-08-06</td>
-          </tr>
-          <tr>
-            <td>1233</td>
-            <td>Approved ddddddddddd dd ddddddddddd</td>
-            <td>작작성자</td>
-            <td>2018-08-04</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
-          <tr>
-            <td>1232</td>
-            <td>Denied dddddddddddddd dddddddddd dddddddddddddd</td>
-            <td>작성자</td>
-            <td>2018-08-01</td>
-          </tr>
+          </tr>      -->
+          <% for(var i=0; i<rows.length; i++) { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= rows[i].title %>
+              </td>
+              <td>
+                <%= rows[i].writer %>
+              </td>
+              <td>
+                <%= rows[i].date %>
+              </td>
+            </tr>
+          <% } %>
         </tbody>
       </table>
       <div id="not_foot">
