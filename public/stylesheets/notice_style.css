@@ -44,7 +44,7 @@ table{
 tbody tr td:nth-child(2){
     text-align: left !important;
     padding-left:5% !important;
-    cursor: pointer;
+    cursor: pointer; 
 }
 tbody tr td:nth-child(2):hover{
     text-decoration: underline;
