@@ -73,33 +73,35 @@ router.get('/home', function (req, res) {
   res.render('home', { title: 'home_test' });
 });
 
-router.get('/formhost', function (req, res, next) {
+router.get('/formhost', function (req, res) {
   res.render('form_host', { title: 'Express' });
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/login', function (req, res) {
   res.render('login', { title: 'login_test' });
 });
 
-router.get('/join', function (req, res, next) {
+router.get('/join', function (req, res) {
   res.render('join', { title: 'Express' });
 });
 
-router.get('/notice', function (req, res, next) {
+router.post('/join',function(req,res){
+
+});
+
+router.get('/notice', function (req, res) {
   var sql = 'SELECT * FROM notice';
   conn.query(sql, function (err, rows, fields) {
     res.render('notice', { title: 'Express', rows: rows });
   });
 });
 
-router.get('/writenotice', function (req, res, next) {
+router.get('/writenotice', function (req, res) {
   res.render('form_notice', { title: 'Express' });
 });
 
 router.post('/writenotice', function (req, res) {
-  console.log("SDFSDFSDFSDF");
   var title = req.body.title;
-  console.log(title)
   var content = req.body.content;
   var writer = 'ang';
   var date = new Date();
