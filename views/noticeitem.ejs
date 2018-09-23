@@ -48,18 +48,38 @@
     </div>
 
     <div class="application">
+
+      <script>
+        $('body').ready(function () {
+          var quill_content = new Quill('#quill_content', {
+            readOnly: true,
+          });
+          $('quill_content').hide();
+          var title = '<%- row.title %>';
+          var content = '<%- row.content %>';
+          var writer = '<%- row.writer %>';
+          var date = '<%- row.date %>';
+          content = content.replace(/\n/g, "\\n");
+          var parsed_content = JSON.parse(content);
+          // quill.setContents(title);
+          $('#posttitle').append(title);
+          $('#postwriter').append(writer);
+          quill_content.setContents(parsed_content);
+          $('#postdate').append(date);
+          // quill.setContents(date);
+        });
+      </script>
+
       <div id="posttop">
-        <span class="right">2018-08-17</span>
-        <div id="posttitle">제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</div>
+        <span id="postdate" class="right"></span>
+        <div id="posttitle"></div>
       </div>
       <div>
         <span class="right">첨부파일</span>
-        <div>글쓴이</div>
+        <div id="postwriter"></div>
       </div>
 
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ligula sapien, rutrum sed vestibulum eget, rhoncus ac erat. Aliquam erat volutpat. Sed convallis scelerisque enim at fermentum. Aliquam consectetur, est ac auctor iaculis, odio mi bibendum leo, in congue neque velit vel enim. Nullam vitae justo at mauris sodales feugiat. Praesent pellentesque ipsum eget tellus imperdiet ultrices. Sed ultricies nisi nec diam sodales fringilla. Quisque adipiscing cursus porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum scelerisque elit, eu pharetra dui pulvinar eget. Nam mollis mauris id tellus ultricies at porttitor neque vulputate. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-      </p>
+      <div id="quill_content" style="min-height: 300px;"></div>
 
       <div id="postbottom">
         <button class="ui button">이전글</button>
@@ -68,9 +88,8 @@
         <button class="ui button">수정</button>
       </div>
 
-    </div>
 
-  </div>
+    </div>
 
 </body>
 

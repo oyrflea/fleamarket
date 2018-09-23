@@ -86,7 +86,7 @@ router.get('/join', function (req, res) {
 });
 
 router.post('/join',function(req,res){
-
+  
 });
 
 router.get('/notice', function (req, res) {
@@ -96,11 +96,18 @@ router.get('/notice', function (req, res) {
   });
 });
 
-router.get('/writenotice', function (req, res) {
-  res.render('form_notice', { title: 'Express' });
+router.get('/notice/add', function (req, res) {
+  var sql = 'SELECT id, title FROM notice';
+  conn.query(sql, function (err, rows, fields) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    }
+    res.render('form_notice', { rows: rows });
+  });
 });
 
-router.post('/writenotice', function (req, res) {
+router.post('/notice/add', function (req, res) {
   var title = req.body.title;
   var content = req.body.content;
   var writer = 'ang';
@@ -127,6 +134,24 @@ router.post('/writenotice', function (req, res) {
     }
   });
 });
+
+router.get('/notice/:id', function (req, res) {
+  var sql = 'SELECT * FROM notice';
+
+  conn.query(sql, function (err, rows, fields) {
+    var id = req.params.id;
+    var sql = 'SELECT * FROM notice WHERE id=?';
+    conn.query(sql, [id], function (err, row, fields) {
+      if (err) {
+        console.log(err);
+      } else {
+        // console.log(row[0]);
+        res.render('noticeitem', { rows: rows, row: row[0] });
+      }
+    });
+  });
+});
+
 
 router.get('/noticeitem', function (req, res, next) {
   res.render('noticeitem', { title: 'Express' });
