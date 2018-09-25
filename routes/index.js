@@ -32,31 +32,28 @@ router.use(passport.session());//passport 인증 작업시 필요 이것은 세�
 
 router.get('/logout', function (req, res) {
   req.logout();//passportjs에 있는 기능
-  req.session.save(function () {//세션작업이 끝난상태에서 안전하게 welcome페이지로 이동
+  req.session.save(function () {//세션작업이 끝난상태에서 안전하게 home페이지로 이동
     req.session.destroy();
-  res.clearCookie('sid');
     res.redirect('/login');
   });
 });
-
 
 router.get('/login', function (req, res) {
   //console.log(req.user);
   //passportjs의 세션을 이용하는게 바람직함
   if (req.user && req.user.id) {//req객체에 user가 생성되었고 값이 있으면 로그인 성공
-    res.render('want_logout', { title: 'home', id: req.user.name } );
+    res.render('home', { title: 'home', id: req.user.name } );
   } else {//값이 없으면 로그인에 실패 혹은 로그인 안한사람
-    res.render('home', { title: 'home' });
+    res.render('login', { title: 'login' });
   }
 });
 
 router.post('/join', function (req, res) {
-  hasher({ password: req.body.password }, function (err, pass, salt, hash) {
+  hasher({ password: req.body.password }, function (err, pass, hash) {
     var user = {
       id: req.body.id,
       name: req.body.name,
-      password:  req.body.password,//pwd로 대체함
-      salt: salt,//만든 salt값도 같이 저장함
+      password: hash,//hash로 대체함
       email: req.body.email,
       phone: req.body.phonenumber
     };
@@ -72,9 +69,10 @@ router.post('/join', function (req, res) {
      }
      if (req.body.User == 'on')
     { var Seller = 0;
-      var Host = 1;
-      var User = 0;
+      var Host = 0;
+      var User = 1;
      }
+
     var sql = 'INSERT INTO users SET ?';
     db.query(sql, user, function (err, results) {
       if (err) {
@@ -84,7 +82,8 @@ router.post('/join', function (req, res) {
         //회원가입후 바로 로그인 하기 위한 코드임
         req.login(user, function (err) {//회원가입이 되고 바로 동시에 로그인 하기 위함
           req.session.save(function () {
-            res.redirect('/home');
+            res.redirect('/login');
+            res.send('<script type="text/javascript">alert("가입 완료!"); document.location.replace("/login");</script>');
           });
         });
       }
@@ -156,7 +155,7 @@ passport.use(new LocalStrategy(
         return done('There is no user');
       }//if문
       var user = results[0];//쿼리된 값 1개를 가져와서
-      return hasher({ password: pwd, salt: user.salt }, function (err, pass, salt, hash) {//salt는 이미 저장된 salt값을 넘겨줌
+      return hasher({ password: pwd}, function (err, pass, hash) {
         if (hash === user.password) {//저장된 해쉬값과 만든 해쉬값이 같으면 인증 성공
           //console.log('localstrategy', user);
           done(null, user);//로그인 성공을 의미 serializeUser 호출 윗 파라미터의 done이 아니다
@@ -175,7 +174,7 @@ router.post('/login',
   }));
 
   
-router.post('/checkID', function (req, res) {
+router.post('/login', function (req, res) {
   var sql = 'SELECT * FROM users WHERE id=?';
   db.query(sql, [req.body.ID], function (err, results) {
     if (err) {
@@ -188,7 +187,7 @@ router.post('/checkID', function (req, res) {
   });
 });
 
-router.get('/checkId/:id', function (req, res) {
+router.get('/login/:id', function (req, res) {
   var sql = 'SELECT * FROM users WHERE id=?';
   db.query(sql, [req.params.id], function (err, result) {
     if (err) {
@@ -295,11 +294,14 @@ router.get('/test', function (req, res, next) {
   res.render('test', { title: 'Express' });
 });
 
-
-
-
 router.get('/mypageseller', function (req, res) {
-  res.render('mypageseller', { title: 'mypageseller_test' });
+  if (req.session.seller==1) {//로그인성공했을때
+    res.redirect('/mypageseller');
+  } else {
+    res.render('login', { title: 'mypageseller_test' });
+  res.send('<script type = "text/javascript">alert("로그인 입력 바랍니다.");</script>');
+  }
+  
 });
 router.get('/mypageseller_good', function (req, res) {
   res.render('mypageseller_good', { title: 'mypageseller_good_test' });
@@ -327,6 +329,7 @@ router.get('/board', function (req, res) {
 router.get('/setting', function (req, res) {
   res.render('setting', { title: 'setting_test' });
 });
+
 router.get('/mypagehost', function(req, res) {
   res.render('mypagehost', { title: 'mypagehost_test' });
 });
