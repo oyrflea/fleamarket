@@ -74,7 +74,7 @@
                 <%= i+1 %>
               </td>
               <td>
-                <%= rows[i].title %>
+                <a href="notice/<%=i+1%>"><%= rows[i].title %></a>
               </td>
               <td>
                 <%= rows[i].writer %>
@@ -84,7 +84,7 @@
               </td>
             </tr>
             <% } %>
-           
+
         </tbody>
       </table>
       <div id="not_foot">
