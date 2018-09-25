@@ -3,13 +3,17 @@ var session = require('express-session')
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var router = express.Router();
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+var MySQLStore = require('express-mysql-session')(session);//session mysql 스토어를 위해 사용
+var bkfd2Password = require("pbkdf2-password");//pbkdf2-password 모듈 사용
+var hasher = bkfd2Password();
 
 var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "jh1502",
+  password: "wldms1404",
   database: 'fleas'
 });
 conn.connect();
@@ -22,43 +26,186 @@ router.use(session({
   saveUninitialized: true
 }));
 
+router.use(passport.initialize());//passport 초기화
+router.use(passport.session());//passport 인증 작업시 필요 이것은 세션을 사용하기 위한 윗 router.use(session)뒤에 써야한다
 
 
-passport.use(new LocalStrategy(
-  {
-    usernameField: 'id',
-    passwordField: 'pwd'
-  },
-  function (username, password, done) {
-    console.log('LocalStrategy', username, password);
-    if (username === authdata.id) {
-      console.lod(1);
-      if (password === authdata.password) {
-        console.lod(2);
-        return done(null, user);
-        //두번째 인자를 false가 아닌 값을 주면 true로 인식
-      } else {
-        console.lod(3);
-        return done(null, false,
-          {
-            message: 'Incorrect password.'
-          });
-      }
-    } else {
-      console.lod(4);
-      return done(null, false,
-        {
-          message: 'Incorrect username.'
-        });
-    }
+router.get('/logout', function (req, res) {
+  req.logout();//passportjs에 있는 기능
+  req.session.save(function () {//세션작업이 끝난상태에서 안전하게 welcome페이지로 이동
+    req.session.destroy();
+  res.clearCookie('sid');
+    res.redirect('/login');
+  });
+});
+
+
+router.get('/login', function (req, res) {
+  //console.log(req.user);
+  //passportjs의 세션을 이용하는게 바람직함
+  if (req.user && req.user.id) {//req객체에 user가 생성되었고 값이 있으면 로그인 성공
+    res.render('want_logout', { title: 'home', id: req.user.name } );
+  } else {//값이 없으면 로그인에 실패 혹은 로그인 안한사람
+    res.render('home', { title: 'home' });
   }
-));
+});
+
+router.post('/join', function (req, res) {
+  hasher({ password: req.body.password }, function (err, pass, salt, hash) {
+    var user = {
+      id: req.body.id,
+      name: req.body.name,
+      password:  req.body.password,//pwd로 대체함
+      salt: salt,//만든 salt값도 같이 저장함
+      email: req.body.email,
+      phone: req.body.phonenumber
+    };
+    if (req.body.Seller == 'on')
+    { var Seller = 1;
+      var Host = 0;
+      var User = 0;
+     }
+    if (req.body.Host == 'on')
+    { var Seller = 0;
+      var Host = 1;
+      var User = 0;
+     }
+     if (req.body.User == 'on')
+    { var Seller = 0;
+      var Host = 1;
+      var User = 0;
+     }
+    var sql = 'INSERT INTO users SET ?';
+    db.query(sql, user, function (err, results) {
+      if (err) {
+        console.log(err);
+        res.status(500);
+      } else {
+        //회원가입후 바로 로그인 하기 위한 코드임
+        req.login(user, function (err) {//회원가입이 되고 바로 동시에 로그인 하기 위함
+          req.session.save(function () {
+            res.redirect('/home');
+          });
+        });
+      }
+    });//두번째에 user를 주면 알아서 user_id = ~~ 등으로 들어감
+  });
+});
+
+// passport.use(new LocalStrategy(
+//   {
+//     usernameField: 'id',
+//     passwordField: 'pwd'
+//   },
+//   function (username, password, done) {
+//     console.log('LocalStrategy', username, password);
+//     if (username === authdata.id) {
+//       console.lod(1);
+//       if (password === authdata.password) {
+//         console.lod(2);
+//         return done(null, user);
+//         //두번째 인자를 false가 아닌 값을 주면 true로 인식
+//       } else {
+//         console.lod(3);
+//         return done(null, false,
+//           {
+//             message: 'Incorrect password.'
+//           });
+//       }
+//     } else {
+//       console.lod(4);
+//       return done(null, false,
+//         {
+//           message: 'Incorrect username.'
+//         });
+//     }
+//   }
+// ));
+
+//done(null, user)가 호출되면 이게 호출됨 여기의 user는 아래 콜백의 user임
+passport.serializeUser(function (user, done) {
+  // console.log('serializeUser', user);
+  // console.log('@@@@@@@@@@@@@@@@@@@@');
+  done(null, user.id);//고유의 id값을 넘겨줘야함 유저를 찾는데 사용함 이 데이터는 세션에 저장됨
+});
+
+passport.deserializeUser(function (id, done) {
+  // console.log('deserializeUser', id);
+  var sql = 'SELECT * FROM users WHERE id=?';
+  db.query(sql, [id], function (err, results) {
+    if (err) {
+      console.log(err);
+      done('There is no user');
+    } else {
+      // console.log(results);
+      done(null, results[0]);
+    }
+  });
+});
+
+
+//미들웨어부분
+passport.use(new LocalStrategy(
+  function (username, password, done) {//여기서 실제 사용자가 맞는지 인증하는 부분을 수행
+    var uname = username;//POST방식으로 보낸 값을 가져옴
+    var pwd = password;
+    var sql = 'SELECT * FROM users WHERE id=?';
+    db.query(sql, [uname], function (err, results) {
+      // console.log(results);
+      if (err) {
+        return done('There is no user');
+      }//if문
+      var user = results[0];//쿼리된 값 1개를 가져와서
+      return hasher({ password: pwd, salt: user.salt }, function (err, pass, salt, hash) {//salt는 이미 저장된 salt값을 넘겨줌
+        if (hash === user.password) {//저장된 해쉬값과 만든 해쉬값이 같으면 인증 성공
+          //console.log('localstrategy', user);
+          done(null, user);//로그인 성공을 의미 serializeUser 호출 윗 파라미터의 done이 아니다
+        } else {
+          done(null, false);//로그인 실패를 의미 message항목은 failureFlash가 true일때만 씀
+        }//if문 종료
+      });//hasher 종료
+    });//query문 종료
+  }));//use문 종료
 
 router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/home',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: false
   }));
+
+  
+router.post('/checkID', function (req, res) {
+  var sql = 'SELECT * FROM users WHERE id=?';
+  db.query(sql, [req.body.ID], function (err, results) {
+    if (err) {
+      console.log(err);
+      done('There is no user');
+    } else {
+      // console.log(results);
+      done(null, results[0]);
+    }
+  });
+});
+
+router.get('/checkId/:id', function (req, res) {
+  var sql = 'SELECT * FROM users WHERE id=?';
+  db.query(sql, [req.params.id], function (err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500);
+    }
+    else {
+      if (result.length == 0) {
+        res.send(true);
+      }
+      else {
+        res.send(false);
+        res.send('<script type = "text/javascript">alert("올바른 정보가 아닙니다.");</script>');
+      }
+    }
+  });
+});
 
 
 router.get('/formseller', function (req, res) {
@@ -147,6 +294,9 @@ router.get('/reviewitem', function (req, res, next) {
 router.get('/test', function (req, res, next) {
   res.render('test', { title: 'Express' });
 });
+
+
+
 
 router.get('/mypageseller', function (req, res) {
   res.render('mypageseller', { title: 'mypageseller_test' });
