@@ -1,4 +1,5 @@
-         $(document).ready(function() {
+
+        $(document).ready(function() {
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("dot");
             slides[0].style.display = "block";
@@ -32,3 +33,5 @@
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
         }
+
+       

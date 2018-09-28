@@ -3,13 +3,11 @@ var session = require('express-session')
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var router = express.Router();
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
 
 var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "jh1502",
+  password: "wldms1404",
   database: 'fleas'
 });
 conn.connect();
@@ -22,44 +20,64 @@ router.use(session({
   saveUninitialized: true
 }));
 
+router.post('/join', function (req, res) {
+  var userid = req.body.userid;
+  var upassword = req.body.password;
+  var uname = req.body.name;
+  var uphonenumber = req.body.phonenumber;
+  var uemail = req.body.email;
 
-
-passport.use(new LocalStrategy(
-  {
-    usernameField: 'id',
-    passwordField: 'pwd'
-  },
-  function (username, password, done) {
-    console.log('LocalStrategy', username, password);
-    if (username === authdata.id) {
-      console.lod(1);
-      if (password === authdata.password) {
-        console.lod(2);
-        return done(null, user);
-        //두번째 인자를 false가 아닌 값을 주면 true로 인식
-      } else {
-        console.lod(3);
-        return done(null, false,
-          {
-            message: 'Incorrect password.'
-          });
-      }
-    } else {
-      console.lod(4);
-      return done(null, false,
-        {
-          message: 'Incorrect username.'
-        });
-    }
+  if (req.body.host == 'on') {
+    var authority = 1;
   }
-));
+  if (req.body.seller == 'on') {
+    var authority = 2;
+  }
+  if (req.body.user == 'on') {
+    var authority = 3;
+  }
 
-router.post('/login',
-  passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/login'
-  }));
+  var sql = 'INSERT INTO member (userID, password, name, phoneNum, email, authority) VALUES(?,?,?,?,?,?)';
+  conn.query(sql, [userid, upassword, uname, uphonenumber, uemail, authority], function (error, results, fields) {
+    if (error) {
+      res.status(500).send('<script type="text/javascript">alert("가입 실패! 다시 입력바랍니다."); document.location.replace("/join");</script>');
+    } else {
+      res.send('<script type="text/javascript">alert("가입 완료!"); document.location.replace("/login");</script>');
+    }
+  });
+});
 
+router.post('/login', function (req, res) {
+  var Uid = req.body.Uid;
+  var Upwd = req.body.Upwd;
+  var sql = 'SELECT * FROM member';
+  var check=5;
+  var aheck=6;
+  var bheck=7;
+  conn.query(sql, function (err, rows, fields) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('error!!~');
+    }
+    else {
+      for (var i = 0; i < rows.length ; i++) {
+         if (Uid == rows[i].userID && Upwd == rows[i].password) {
+          req.session.displayAuthority = rows[i].authority;
+          console.log(req.session.displayAuthority);
+          return req.session.save(function () {
+            res.redirect('/home');
+          });
+        }         
+      }
+      res.send('<script type = "text/javascript">alert("올바른 정보가 아닙니다. 다시 입력해주세요."); document.location.replace("/login");</script>');
+    }
+  });
+});
+router.get('/logout', function (req, res) {
+  req.session.destory();  // 세션 삭제
+  // res.clearCookie('sid'); // 세션 쿠키 삭제
+  res.redirect('/home');
+});
 
 router.get('/formseller', function (req, res) {
   res.render('form_seller', { title: 'sellerform_test' });
@@ -218,21 +236,56 @@ router.get('/test', function (req, res, next) {
   res.render('test', { title: 'Express' });
 });
 
+router.get('/mypage', function (req, res) {
+  if(req.session.displayAuthority){
+    if (req.session.displayAuthority == 1) {//로그인성공했을때
+      res.render('mypagehost', { title: 'mypagehost' });
+    }
+    else if (req.session.displayAuthority == 2) {//로그인성공했을때
+      res.render('mypageseller',{ title: 'mypageseller' });
+    }
+    else if (req.session.displayAuthority == 3) {//로그인성공했을때
+      res.render('mypageuser', { title: 'mypageuser' });;
+    }
+  }
+  else {
+    res.send('<script type = "text/javascript">alert("로그인 후 사용가능합니다.");document.location.replace("/login");</script>');
+  }
+});
+
+// router.get('/Inst_profile', function (req, res) {
+//   if (req.session.displayName) {//로그인성공했을때
+//     res.render('Instagram_profile');
+//   } else {
+//     //로그인 실패했을때
+//     res.redirect('/Inst_login');
+//   }
+// })
+// router.get('/Inst_profile', function (req, res) {
+//   if (req.session.displayName) {//로그인성공했을때
+//     res.render('Instagram_profile');
+//   } else {
+//     //로그인 실패했을때
+//     res.redirect('/Inst_login');
+//   }
+// })
+
+
+
+
+
 router.get('/mypageseller', function (req, res) {
-  res.render('mypageseller', { title: 'mypageseller_test' });
+  res.render('mypageseller', { title: 'mypageseller' });
 });
 router.get('/mypageseller_good', function (req, res) {
   res.render('mypageseller_good', { title: 'mypageseller_good_test' });
 });
-
 router.get('/mypageseller_participate', function (req, res) {
   res.render('mypageseller_participate', { title: 'mypageseller_participate_test' });
 });
-
 router.get('/mypageseller_apply', function (req, res) {
   res.render('mypageseller_apply', { title: 'mypageseller_apply_test' });
 });
-
 
 router.get('/market', function (req, res) {
   res.render('market', { title: 'mypageseller_test' });
