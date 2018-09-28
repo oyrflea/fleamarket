@@ -85,8 +85,8 @@ router.get('/join', function (req, res) {
   res.render('join', { title: 'Express' });
 });
 
-router.post('/join',function(req,res){
-  
+router.post('/join', function (req, res) {
+
 });
 
 router.get('/notice', function (req, res) {
@@ -132,6 +132,51 @@ router.post('/notice/add', function (req, res) {
     } else {
       res.redirect('/notice/' + rows.insertId);
     }
+  });
+});
+
+router.get('/notice/:id/delete', function (req, res) {
+  var sql = 'SELECT id, title FROM board';
+  var id = req.params.id;
+  db.query(sql, function (err, rows, fields) {
+    var sql = 'SELECT * FROM board WHERE id=?';
+    db.query(sql, [id], function (err, row, fields) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        if (row.length == 0) {
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          res.render('delete2', { rows: rows, row: row[0] });
+        }
+      }
+    });
+  });
+});
+
+
+/* 
+SET @count = 0;
+UPDATE `users` SET `users`.`id` = @count:= @count + 1;
+ALTER TABLE `users` AUTO_INCREMENT = 1;
+
+*/
+
+router.post('/notice/:id/delete', function (req, res) {
+  var id = req.params.id;
+  var sql = 'DELETE FROM board WHERE id=?';
+  db.query(sql, [id], function (err, row, fields) {
+    var sql = 'alter table board auto_increment=1';
+    db.query(sql, [id], function (err, row, fields) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.redirect('/information');
+      }
+    });
   });
 });
 
@@ -202,22 +247,22 @@ router.get('/board', function (req, res) {
 router.get('/setting', function (req, res) {
   res.render('setting', { title: 'setting_test' });
 });
-router.get('/mypagehost', function(req, res) {
+router.get('/mypagehost', function (req, res) {
   res.render('mypagehost', { title: 'mypagehost_test' });
 });
-router.get('/mypagehost_applier', function(req, res) {
+router.get('/mypagehost_applier', function (req, res) {
   res.render('mypagehost_applier', { title: 'mypagehost_applier_test' });
 });
-router.get('/mypageuser', function(req, res) {
+router.get('/mypageuser', function (req, res) {
   res.render('mypageuser', { title: 'mypageuser_test' });
 });
-router.get('/mypageuser_good', function(req, res) {
+router.get('/mypageuser_good', function (req, res) {
   res.render('mypageuser_good', { title: 'mypageuser_good_test' });
 });
-router.get('/message', function(req, res) {
+router.get('/message', function (req, res) {
   res.render('message', { title: 'message_test' });
 });
-router.get('/form_board', function(req, res) {
+router.get('/form_board', function (req, res) {
   res.render('form_board', { title: 'form_board_test' });
 });
 module.exports = router;
