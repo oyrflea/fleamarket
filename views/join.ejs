@@ -52,7 +52,7 @@
       <form class="ui form" action="/join" method="POST">
         <div class="field">
           <label>아이디</label>
-          <input type="text" name="id" placeholder="ID">
+          <input type="text" name="userid" placeholder="ID">
         </div>
         <div class="field">
           <label>비밀번호</label>
@@ -72,11 +72,11 @@
         </div>
         <div class="field">
           <label>종류</label>
-          <input type="radio" name="Seller" value="Seller"> 판매자(Seller)  
-          <input type="radio" name="Host" value="Host">  주최자(Host)  
-          <input type="radio" name="User" value="User">  사용자(User)
+          <input type="radio" name="seller"> 판매자(Seller)  
+          <input type="radio" name="host">  주최자(Host)  
+          <input type="radio" name="user">  사용자(User)
         </div>
-        <div id="form_btn"  type="submit" class="ui fluid large submit button">가입</div>
+        <button id="form_btn"  type="submit" class="ui fluid large submit button">가입</button>
       </form>
 
     </div>
