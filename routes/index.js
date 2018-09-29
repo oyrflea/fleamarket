@@ -7,7 +7,7 @@ var router = express.Router();
 var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "wldms1404",
+  password: "jh1502",
   database: 'fleas'
 });
 conn.connect();
@@ -51,23 +51,23 @@ router.post('/login', function (req, res) {
   var Uid = req.body.Uid;
   var Upwd = req.body.Upwd;
   var sql = 'SELECT * FROM member';
-  var check=5;
-  var aheck=6;
-  var bheck=7;
+  var check = 5;
+  var aheck = 6;
+  var bheck = 7;
   conn.query(sql, function (err, rows, fields) {
     if (err) {
       console.log(err);
       res.status(500).send('error!!~');
     }
     else {
-      for (var i = 0; i < rows.length ; i++) {
-         if (Uid == rows[i].userID && Upwd == rows[i].password) {
+      for (var i = 0; i < rows.length; i++) {
+        if (Uid == rows[i].userID && Upwd == rows[i].password) {
           req.session.displayAuthority = rows[i].authority;
           console.log(req.session.displayAuthority);
           return req.session.save(function () {
             res.redirect('/home');
           });
-        }         
+        }
       }
       res.send('<script type = "text/javascript">alert("올바른 정보가 아닙니다. 다시 입력해주세요."); document.location.replace("/login");</script>');
     }
@@ -154,27 +154,26 @@ router.post('/notice/add', function (req, res) {
 });
 
 router.get('/notice/:id/delete', function (req, res) {
-  var sql = 'SELECT id, title FROM board';
   var id = req.params.id;
-  db.query(sql, function (err, rows, fields) {
-    var sql = 'SELECT * FROM board WHERE id=?';
-    db.query(sql, [id], function (err, row, fields) {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      } else {
-        if (row.length == 0) {
-          console.log(err);
-          res.status(500).send('Internal Server Error');
-        } else {
-          res.render('delete2', { rows: rows, row: row[0] });
-        }
-      }
+  var sql = 'DELETE FROM notice WHERE id=?';
+  conn.query(sql, [id], function (err, row, fields) {
+    var sql = 'SET @count = 0';
+    conn.query(sql, [id], function (err, row, fields) {
+      var sql = 'UPDATE notice SET notice.`id` = @count:= @count + 1;';
+      conn.query(sql, [id], function (err, row, fields) {
+        var sql = 'alter table notice auto_increment=1';
+        conn.query(sql, function (err, row, fields) {
+          if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+          } else {
+            res.redirect('/notice');
+          }
+        });
+      });
     });
   });
 });
-
-
 /* 
 SET @count = 0;
 UPDATE `users` SET `users`.`id` = @count:= @count + 1;
@@ -182,19 +181,41 @@ ALTER TABLE `users` AUTO_INCREMENT = 1;
 
 */
 
-router.post('/notice/:id/delete', function (req, res) {
+
+
+router.get('/notice/:id/edit', function (req, res) {
+  var sql = 'SELECT id, title FROM notice';
+  conn.query(sql, function (err, rows, fields) {
+    var id = req.params.id;
+    if (id) {
+      var sql = 'SELECT * FROM notice WHERE id=?';
+      conn.query(sql, [id], function (err, row, fields) {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          res.render('notice_edit', { rows: rows, row: row[0] });
+        }
+      });
+    } else {
+      console.log('There is no id.');
+      res.status(500).send('Internal Server Error');
+    }
+  });
+});
+
+router.post('/notice/:id/edit', function (req, res, next) {
+  var title = req.body.title;
+  var content = req.body.content;
   var id = req.params.id;
-  var sql = 'DELETE FROM board WHERE id=?';
-  db.query(sql, [id], function (err, row, fields) {
-    var sql = 'alter table board auto_increment=1';
-    db.query(sql, [id], function (err, row, fields) {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-      } else {
-        res.redirect('/information');
-      }
-    });
+  var sql = 'UPDATE notice SET title=?, content=? WHERE id=?';
+  conn.query(sql, [title, content, id], function (err, row, fields) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.redirect('/notice/' + id);
+    }
   });
 });
 
@@ -237,12 +258,12 @@ router.get('/test', function (req, res, next) {
 });
 
 router.get('/mypage', function (req, res) {
-  if(req.session.displayAuthority){
+  if (req.session.displayAuthority) {
     if (req.session.displayAuthority == 1) {//로그인성공했을때
       res.render('mypagehost', { title: 'mypagehost' });
     }
     else if (req.session.displayAuthority == 2) {//로그인성공했을때
-      res.render('mypageseller',{ title: 'mypageseller' });
+      res.render('mypageseller', { title: 'mypageseller' });
     }
     else if (req.session.displayAuthority == 3) {//로그인성공했을때
       res.render('mypageuser', { title: 'mypageuser' });;

@@ -62,17 +62,18 @@
       <div id="quill_content"></div>
 
       <div id="postbottom">
-        <button class="ui button">이전글</button>
-        <button class="ui button">다음글</button>
+        <button id="pre" class="ui button">이전글</button>
+        <button id="next" class="ui button">다음글</button>
         <button class="ui button" onclick="location.href='/notice'">목록</button>
-        <button class="ui button">삭제</button>
-        <button class="ui button">수정</button>
+        <button id="delete" class="ui button">삭제</button>
+        <button class="ui button" onclick="location.href='/notice/<%= row.id %>/edit'">수정</button>
       </div>
 
 
     </div>
 
     <script>
+
       $('body').ready(function () {
         var quill_content = new Quill('#quill_content', {
           readOnly: true,
@@ -91,6 +92,36 @@
         $('#postdate').append(date);
         // quill.setContents(date);
       });
+
+      var id = '<%- row.id %>';
+      var pre_b = document.getElementById("pre");
+      pre_b.onclick = function () {
+        if (id - 1 < 1) {
+          alert("이전 공지사항이 없습니다.");
+        } else {
+          document.location.href = '/notice/<%= row.id -1 %>';
+        }
+      }
+      var len = '<%- rows.length %>';
+      var next_b = document.getElementById("next");
+      next_b.onclick = function () {
+        if (id + 1 >= len) {
+          alert("다음 공지사항이 없습니다.");
+        } else {
+          document.location.href = '/notice/<%= row.id +1 %>';
+        }
+      }
+
+      var delete_b = document.getElementById("delete");
+      delete_b.onclick = function () {
+        if (confirm("삭제하시겠습니까?") == true) {
+          document.location.href = '/notice/<%= row.id %>/delete';
+          alert("삭제 완료!");
+        } else {
+          return;
+        }
+      }
+
     </script>
 
 </body>
