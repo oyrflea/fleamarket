@@ -65,6 +65,18 @@
     <script>
 
         $('body').ready(function () {
+            document.getElementById('titlebar').addEventListener('keypress', function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                }
+            });
+            $("#titlebar").keyup(function () {
+                if ($(this).val() == "") {
+                    $(this).css("font-style", "italic");
+                    return false;
+                }
+                $(this).css("font-style", "normal");
+            });
             var toolbarOptions = [
                 [{ header: [1, 2, false] }],
                 ['bold', 'italic', 'underline'],

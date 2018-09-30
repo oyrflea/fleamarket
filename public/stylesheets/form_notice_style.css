@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 #editor-container {
-    height: 375px;
+    min-height: 375px;
+    height: auto;
     background-color: white;
 }
 /* #title-container{
@@ -15,6 +16,8 @@
     border:1px solid #ccc;
     color:#000000de;
     outline: none;
+}
+#titlebar::placeholder{
     font-style: italic;
 }
 #writebtn{
