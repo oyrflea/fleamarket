@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FLEAS</title>
     <link rel="shortcut icon" href="images/store.ico">
+    <link rel='stylesheet' href='stylesheets/common_style.css' />
     <link rel="stylesheet" type="text/css" href="stylesheets/home.css">
     <link rel="stylesheet" type="text/css" href="dist/semantic.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-    <div class="ui container" id="conall">
+    <div class="main ui container" id="conall">
 
         <header>
             <div id="head_top">
@@ -23,7 +24,7 @@
              <a href="/logout" class="logout" style="display:none;">로그아웃</a> 
             </div>
 
-            <div id="main_logo">
+            <div href="home" id="main_logo">
                 <img class="market_img" src="images/market.png" alt="market icon">
                 <div id="fleas">
                     Fleas
@@ -38,15 +39,25 @@
                     <a href="/review" class="item">리뷰</a>
                     <a href="/mypage" class="item">마이페이지</a>
             </div>
+
+            <div class="ui tag labels">
+                <a class="ui huge label">
+                  마켓 등록
+                </a>
+                <a class="ui huge label">
+                  셀러 등록
+                </a>
+              </div>
         </header>
-        <div class="f3">
+        
+        <!-- <div class="f3">
             <button class="ui pink button" style="  height: 60px;
                         width: 300px; float: left; background-color: #FF8D87 !important;"><a href="/formhost">마켓등록</a></button>
 
             <button class="ui pink button" style="  height: 60px;
                         width: 300px; float: right;  background-color: #FF8D87 !important;"><a href="/formseller">셀러신청</a></button>
 
-        </div>
+        </div> -->
 
         <div class="slideshow-container">
 
