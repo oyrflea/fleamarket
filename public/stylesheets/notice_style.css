@@ -25,8 +25,11 @@ table{
     margin-top: 20px;
     word-spacing: 5px;
 }
-#page_num span{
-    cursor: pointer;
+#page_num a{
+    margin:0 2px;
+}
+#page_num a:hover{
+    font-weight: 600;
 }
 .thr{
     width: 33%;
@@ -54,4 +57,7 @@ tbody tr td:nth-child(2){
 }
 tbody tr td:nth-child(2):hover{
     text-decoration: underline;
+}
+.pn_click{
+    text-decoration: underline !important;
 }

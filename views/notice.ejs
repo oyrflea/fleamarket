@@ -4,17 +4,16 @@
 <head>
   <meta chatset="utf-8">
   <title>FLEAS</title>
-  <link rel="shortcut icon" href="images/store.ico">
-  <link rel='stylesheet' href='stylesheets/common_style.css' />
-  <link rel='stylesheet' href='stylesheets/market.css' />
-  <link rel='stylesheet' href='stylesheets/notice_style.css' />
-  <link rel="stylesheet" type="text/css" href="dist/semantic.css">
+  <link rel="shortcut icon" href="../../images/store.ico">
+  <link rel='stylesheet' href='../../stylesheets/common_style.css' />
+  <link rel='stylesheet' href='../../stylesheets/market.css' />
+  <link rel='stylesheet' href='../../stylesheets/notice_style.css' />
+  <link rel="stylesheet" type="text/css" href="../../dist/semantic.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
-  <script src="dist/semantic.js"></script>
+  <script src="../../dist/semantic.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-  <script type="text/javascript" href="javascripts/main.js"></script>
 </head>
 
 <body>
@@ -22,23 +21,23 @@
     <!-- 통일된 상단 메뉴 -->
     <header>
       <div id="head_top">
-        <a href="login">로그인</a>
+        <a href="../../login">로그인</a>
       </div>
 
-      <a href="home" id="main_logo">
-        <img class="market_img" src="images/market.png" alt="market icon">
+      <a href="../../home" id="main_logo">
+        <img class="market_img" src="../../images/market.png" alt="market icon">
         <div id="fleas">
           Fleas
         </div>
-        <img class="market_img" src="images/market.png" alt="market icon">
+        <img class="market_img" src="../../images/market.png" alt="market icon">
       </a>
 
       <div class="ui five item menu">
-        <a href="market" class="item">플리마켓</a>
-        <a href="seller" class="item">셀러</a>
-        <a href="notice" class="active item">공지사항</a>
-        <a href="review" class="item">리뷰</a>
-        <a href="mypage" class="item">마이페이지</a>
+        <a href="../../market" class="item">플리마켓</a>
+        <a href="../../seller" class="item">셀러</a>
+        <a href="../../notice" class="active item">공지사항</a>
+        <a href="../../review" class="item">리뷰</a>
+        <a href="../../mypage" class="item">마이페이지</a>
       </div>
     </header>
 
@@ -68,44 +67,46 @@
           </tr>
         </thead>
         <tbody>
-          <% for(var i=rows.length-1; i>=0; i--) { %>
+          <% for(var i=firstrow; i>=lastrow; i--) { %>
             <tr>
               <td>
-                <%= i+1 %>
+                <%= i %>
               </td>
               <td>
-                <a href="notice/<%=i+1%>"><%= rows[i].title %></a>
+                <a href="../../notice/<%=i%>">
+                  <%= rows[i-1].title %>
+                </a>
               </td>
               <td>
-                <%= rows[i].writer %>
+                <%= rows[i-1].writer %>
               </td>
               <td>
-                <%= rows[i].date %>
+                <%= rows[i-1].date %>
               </td>
             </tr>
-            <% } %>
-
+          <% } %>
         </tbody>
       </table>
       <div id="not_foot">
         <div class="thr"></div>
         <div class="thr" id="page_num">
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
+          <% for(var i=0; i<rows.length/10; i++) { %>
+            <a href="/notice/list/<%=i+1 %>" id="pagenum_<%= i %>" onclick=>
+              [<%= i+1%>]
+            </a>
+          <% } %>
         </div>
         <div class="thr" id="wb">
           <button id="writebtn" class="ui button" onclick="location.href='/notice/add'">글쓰기</button>
         </div>
       </div>
-
-
     </div>
-
   </div>
-
+  <script>
+      $('#pagenum_<%=page-1%>').css({
+        'font-weight': 'bold'
+      });
+  </script>
 </body>
 
 </html>

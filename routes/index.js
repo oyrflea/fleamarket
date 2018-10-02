@@ -108,9 +108,30 @@ router.post('/join', function (req, res) {
 });
 
 router.get('/notice', function (req, res) {
+  var page = 1;
   var sql = 'SELECT * FROM notice';
   conn.query(sql, function (err, rows, fields) {
-    res.render('notice', { title: 'Express', rows: rows });
+    var firstrow = rows.length - (page-1) * 10;
+    var lastrow = firstrow - 9;
+    if (lastrow < 1) {
+      lastrow = 1;
+    }
+    console.log(firstrow+"______"+lastrow);
+    res.render('notice', { rows: rows, page: page, firstrow: firstrow, lastrow: lastrow });
+  });
+});
+
+router.get('/notice/list/:page', function (req, res) {
+  var page = req.params.page;
+  var sql = 'SELECT * FROM notice';
+  conn.query(sql, function (err, rows, fields) {
+    var firstrow = rows.length - (page-1) * 10;
+    var lastrow = firstrow - 9;
+    if (lastrow < 1) {
+      lastrow = 1;
+    }
+    console.log(firstrow+"______"+lastrow);
+    res.render('notice', { rows: rows, page: page, firstrow: firstrow, lastrow: lastrow });
   });
 });
 
@@ -127,30 +148,34 @@ router.get('/notice/add', function (req, res) {
 
 router.post('/notice/add', function (req, res) {
   var title = req.body.title;
-  var content = req.body.content;
-  var writer = 'ang';
-  var date = new Date();
-  var dd = date.getDate();
-  var mm = date.getMonth() + 1; //January is 0!
-  var yyyy = date.getFullYear();
+  if (title) {
+    var content = req.body.content;
+    var writer = 'coco.B';
+    var date = new Date();
+    var dd = date.getDate();
+    var mm = date.getMonth() + 1; //January is 0!
+    var yyyy = date.getFullYear();
 
-  if (dd < 10) {
-    dd = '0' + dd;
-  }
-
-  if (mm < 10) {
-    mm = '0' + mm;
-  }
-  date = yyyy + '. ' + mm + '. ' + dd + '. ';
-  var sql = 'INSERT INTO notice (title, content, writer, date) VALUES(?, ?, ?, ?)';
-  conn.query(sql, [title, content, writer, date], function (err, rows, fields) {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Internal Server Error');
-    } else {
-      res.redirect('/notice/' + rows.insertId);
+    if (dd < 10) {
+      dd = '0' + dd;
     }
-  });
+
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    date = yyyy + '. ' + mm + '. ' + dd + '. ';
+    var sql = 'INSERT INTO notice (title, content, writer, date) VALUES(?, ?, ?, ?)';
+    conn.query(sql, [title, content, writer, date], function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.redirect('/notice/' + rows.insertId);
+      }
+    });
+  } else {
+    res.send('<script>alert("제목을 입력하세요.");</script>');
+  }
 });
 
 router.get('/notice/:id/delete', function (req, res) {
@@ -167,7 +192,7 @@ router.get('/notice/:id/delete', function (req, res) {
             console.log(err);
             res.status(500).send('Internal Server Error');
           } else {
-            res.redirect('/notice');
+            res.redirect('/notice/list/1');
           }
         });
       });
