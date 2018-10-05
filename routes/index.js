@@ -116,7 +116,6 @@ router.get('/notice', function (req, res) {
     if (lastrow < 1) {
       lastrow = 1;
     }
-    console.log(firstrow+"______"+lastrow);
     res.render('notice', { rows: rows, page: page, firstrow: firstrow, lastrow: lastrow });
   });
 });
@@ -130,26 +129,26 @@ router.get('/notice/list/:page', function (req, res) {
     if (lastrow < 1) {
       lastrow = 1;
     }
-    console.log(firstrow+"______"+lastrow);
     res.render('notice', { rows: rows, page: page, firstrow: firstrow, lastrow: lastrow });
   });
 });
 
 router.get('/notice/add', function (req, res) {
   var sql = 'SELECT id, title FROM notice';
+  var cont='';
   conn.query(sql, function (err, rows, fields) {
     if (err) {
       console.log(err);
       res.status(500).send('Internal Server Error');
     }
-    res.render('form_notice', { rows: rows });
+    res.render('form_notice', { rows: rows, cont: cont});
   });
 });
 
 router.post('/notice/add', function (req, res) {
   var title = req.body.title;
+  var content = req.body.content;
   if (title) {
-    var content = req.body.content;
     var writer = 'coco.B';
     var date = new Date();
     var dd = date.getDate();
@@ -174,7 +173,7 @@ router.post('/notice/add', function (req, res) {
       }
     });
   } else {
-    res.send('<script>alert("제목을 입력하세요.");</script>');
+    res.render('form_notice', { title: title, cont: content });
   }
 });
 

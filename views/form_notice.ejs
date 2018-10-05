@@ -53,56 +53,37 @@
             <!-- <div id="title-container"></div> -->
             <form action="/notice/add" method="POST">
                 <input id="titlebar" type="text" name="title" placeholder="제목을 입력해주세요" autocomplete="off">
-                <div id="editor-container"></div>
+                <div id="editor-container" name="content"></div>
                 <input type="hidden" name="content">
-                <div id="wb">
-                    <button id="writebtn" class="ui button" type="submit">등록</button>
+                <div id="sbtn">
+                    <button id="btn_s" class="writebtn ui button" type="submit">등록</button>
                 </div>
             </form>
+            <button class="writebtn ui button" onclick="location.href='../notice'">취소</button>
         </div>
 
     </div>
     <script>
 
         $('body').ready(function () {
-            document.getElementById('titlebar').addEventListener('keypress', function (event) {
-                if (event.keyCode == 13) {
-                    event.preventDefault();
-                }
-            });
-            $("#titlebar").keyup(function () {
-                if ($(this).val() == "") {
-                    $(this).css("font-style", "italic");
-                    return false;
-                }
-                $(this).css("font-style", "normal");
-            });
-            var toolbarOptions = [
-                [{ header: [1, 2, false] }],
-                ['bold', 'italic', 'underline'],
-                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                [{ 'align': [] }],
-                ['image']
-            ];
-
-            // var quillTitle = new Quill('#title-container', {
-            //     theme: 'snow',
-            //     placeholder: '제목을 입력해주세요',
-            //     modules: {
-            //         toolbar: false
-            //     }
-            // });
 
             var quill = new Quill('#editor-container', {
                 theme: 'snow',
                 placeholder: '내용을 입력해주세요',
                 modules: {
-                    toolbar: toolbarOptions
-                },
+                    toolbar: [
+                        [{ header: [1, 2, false] }],
+                        ['bold', 'italic', 'underline'],
+                        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                        [{ 'align': [] }],
+                        ['link','image']
+                    ]
+                }
             });
 
             $(".ql-toolbar").find('button').attr('tabindex', '-1');
             $(".ql-toolbar").find('span').attr('tabindex', '-1');
+
 
             var form = document.querySelector('form');
             form.onsubmit = function () {
@@ -110,6 +91,11 @@
 
                 content.value = JSON.stringify(quill.getContents());
             };
+
+            var content = '<%- cont %>';
+            content = content.replace(/\n/g, "\\n");
+            var parsed_content = JSON.parse(content);
+            quill.setContents(parsed_content);
         });
 
     </script>

@@ -64,7 +64,7 @@
       <div id="postbottom">
         <button id="pre" class="ui button">이전글</button>
         <button id="next" class="ui button">다음글</button>
-        <button class="ui button" onclick="location.href='/notice/list/1'">목록</button>
+        <button class="ui button" onclick="location.href='/notice/list/<%= parseInt((rows.length-row.id)/10)+1%>'">목록</button>
         <button id="delete" class="ui button">삭제</button>
         <button class="ui button" onclick="location.href='/notice/<%= row.id %>/edit'">수정</button>
       </div>

@@ -1,14 +1,9 @@
 @charset "UTF-8";
 
 #editor-container {
-    min-height: 375px;
-    height: auto;
+    height: 600px;
     background-color: white;
 }
-/* #title-container{
-    background-color: white;
-    margin-bottom: 20px;
-} */
 #titlebar{
     margin-bottom: 20px;
     padding:12px 15px;
@@ -20,10 +15,12 @@
 #titlebar::placeholder{
     font-style: italic;
 }
-#writebtn{
-    background-color: #a8c2d4;
+.writebtn{
+    background-color: #a8c2d4 !important;
 }
-#wb{
-    text-align: right;
+#sbtn{
     margin-top: 20px;
+}
+#sbtn button{
+    float: right;
 }
