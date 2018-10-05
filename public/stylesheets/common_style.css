@@ -55,3 +55,9 @@ a{
 input::placeholder{
     font-family: sans-serif !important;
 }
+.login{
+    display:none;
+}
+.logout{
+    display:block;
+}

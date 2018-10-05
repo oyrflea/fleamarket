@@ -7,7 +7,7 @@ var router = express.Router();
 var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "jh1502",
+  password: "wldms1404",
   database: 'fleas'
 });
 conn.connect();
@@ -51,20 +51,21 @@ router.post('/login', function (req, res) {
   var Uid = req.body.Uid;
   var Upwd = req.body.Upwd;
   var sql = 'SELECT * FROM member';
-  var check = 5;
-  var aheck = 6;
-  var bheck = 7;
   conn.query(sql, function (err, rows, fields) {
     if (err) {
-      console.log(err);
+      // console.log(err);
       res.status(500).send('error!!~');
     }
     else {
       for (var i = 0; i < rows.length; i++) {
         if (Uid == rows[i].userID && Upwd == rows[i].password) {
           req.session.displayAuthority = rows[i].authority;
-          console.log(req.session.displayAuthority);
+          // console.log(req.session.displayAuthority);
           return req.session.save(function () {
+            if(req.session){
+              console.log(req.session);
+              console.log('로그인되어있음');
+           }
             res.redirect('/home');
           });
         }
@@ -73,11 +74,19 @@ router.post('/login', function (req, res) {
     }
   });
 });
+
 router.get('/logout', function (req, res) {
-  req.session.destory();  // 세션 삭제
-  // res.clearCookie('sid'); // 세션 쿠키 삭제
+  if(req.session){
+     console.log(req.session);
+  }
+  req.session.destroy();
+  res.clearCookie('sid');
   res.redirect('/home');
+  console.log('로그아웃');
 });
+router.get('/', function (req, res) {
+  res.render('home');
+})
 
 router.get('/formseller', function (req, res) {
   res.render('form_seller', { title: 'sellerform_test' });
@@ -88,7 +97,15 @@ router.get('/apply', function (req, res) {
 });
 
 router.get('/home', function (req, res) {
-  res.render('home', { title: 'home_test' });
+  // if (req.session.displayAuthority) {//로그인성공했을때
+    // console.log(req.session.displayAuthority);
+    // res.send('<script type="text/javascript" src="loginout.js"></script>');
+    // res.send('<script type="text/javascript"> document.location.replace("/home");</script>');
+
+  //   res.send('<script src="loginout.js"> document.location.replace("/home");</script>');
+  // }
+  // else {
+    res.render('home', { title: 'home_test' });
 });
 
 router.get('/formhost', function (req, res) {
@@ -103,9 +120,9 @@ router.get('/join', function (req, res) {
   res.render('join', { title: 'Express' });
 });
 
-router.post('/join', function (req, res) {
+// router.post('/join', function (req, res) {
 
-});
+// });
 
 router.get('/notice', function (req, res) {
   var sql = 'SELECT * FROM notice';
@@ -273,27 +290,6 @@ router.get('/mypage', function (req, res) {
     res.send('<script type = "text/javascript">alert("로그인 후 사용가능합니다.");document.location.replace("/login");</script>');
   }
 });
-
-// router.get('/Inst_profile', function (req, res) {
-//   if (req.session.displayName) {//로그인성공했을때
-//     res.render('Instagram_profile');
-//   } else {
-//     //로그인 실패했을때
-//     res.redirect('/Inst_login');
-//   }
-// })
-// router.get('/Inst_profile', function (req, res) {
-//   if (req.session.displayName) {//로그인성공했을때
-//     res.render('Instagram_profile');
-//   } else {
-//     //로그인 실패했을때
-//     res.redirect('/Inst_login');
-//   }
-// })
-
-
-
-
 
 router.get('/mypageseller', function (req, res) {
   res.render('mypageseller', { title: 'mypageseller' });

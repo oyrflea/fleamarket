@@ -303,4 +303,18 @@ a{
             }
         }
 
-        
+
+        .login{
+            display:block;
+        }
+        .logout{
+            display:block;
+        }
+
+        /* .login-form.state-hidden {
+            display: none;
+          }
+          .login-user.state-hidden {
+            display: none;
+          }
+           */

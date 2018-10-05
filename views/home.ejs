@@ -12,15 +12,16 @@
         crossorigin="anonymous"></script>
     <script src="dist/semantic.js"></script>
     <script src="javascripts/home.js"></script>
+    <script src="javascripts/loginout.js"></script>
 </head>
 
 <body>
     <div class="ui container" id="conall">
 
         <header>
-            <div id="head_top">
-             <a href="/login" class="login">로그인</a>
-             <a href="/logout" class="logout" style="display:none;">로그아웃</a> 
+            <div id="head_top" class="changelog()">
+                <a href="/login"  class="login">로그인</a>
+                <a href="/logout" class="logout">로그아웃</a>
             </div>
 
             <div id="main_logo">
@@ -32,19 +33,23 @@
             </div>
 
             <div class="ui five item menu">
-                    <a href="/market" class="item">플리마켓</a>
-                    <a href="/seller" class="item">셀러</a>
-                    <a href="/notice" class="item">공지사항</a>
-                    <a href="/review" class="item">리뷰</a>
-                    <a href="/mypage" class="item">마이페이지</a>
+                <a href="/market" class="item">플리마켓</a>
+                <a href="/seller" class="item">셀러</a>
+                <a href="/notice" class="item">공지사항</a>
+                <a href="/review" class="item">리뷰</a>
+                <a href="/mypage" class="item">마이페이지</a>
             </div>
         </header>
         <div class="f3">
             <button class="ui pink button" style="  height: 60px;
-                        width: 300px; float: left; background-color: #FF8D87 !important;"><a href="/formhost">마켓등록</a></button>
+                        width: 300px; float: left; background-color: #FF8D87 !important;">
+                <a href="/formhost">마켓등록</a>
+            </button>
 
             <button class="ui pink button" style="  height: 60px;
-                        width: 300px; float: right;  background-color: #FF8D87 !important;"><a href="/formseller">셀러신청</a></button>
+                        width: 300px; float: right;  background-color: #FF8D87 !important;">
+                <a href="/formseller">셀러신청</a>
+            </button>
 
         </div>
 
@@ -85,8 +90,12 @@
 
         <div class="bottomtool">
             <div class="f1">
-                <div class="subtitle"> <a href="/market">플리마켓</a></div>
-                <div class="subplus"> <a href="/market">+더보기</a></div>
+                <div class="subtitle">
+                    <a href="/market">플리마켓</a>
+                </div>
+                <div class="subplus">
+                    <a href="/market">+더보기</a>
+                </div>
 
                 <div class="f1img">
                     <a>
@@ -106,8 +115,12 @@
 
 
             <div class="f1">
-                <div class="subtitle"><a href="/seller">셀러</a></div>
-                <div class="subplus"><a href="/seller">+더보기</a></div>
+                <div class="subtitle">
+                    <a href="/seller">셀러</a>
+                </div>
+                <div class="subplus">
+                    <a href="/seller">+더보기</a>
+                </div>
                 <div class="f1img">
                     <a>
                         <img src="images/p1.jpg" class="pposter">
@@ -125,8 +138,12 @@
             </div>
 
             <div class="f1">
-                <div class="subtitle"><a href="/notice">공지사항</a></div>
-                <div class="subplus"><a href="/notice">+더보기</a></div>
+                <div class="subtitle">
+                    <a href="/notice">공지사항</a>
+                </div>
+                <div class="subplus">
+                    <a href="/notice">+더보기</a>
+                </div>
                 <div>text1</div>
                 <div>text2</div>
                 <div>text3</div>
