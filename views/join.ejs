@@ -13,7 +13,7 @@
   <script src="dist/semantic.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
+  <script src="javascripts/join_warning.js"></script>
 </head>
 
 <body>
@@ -52,30 +52,38 @@
       <form class="ui form" action="/join" method="POST">
         <div class="field">
           <label>아이디</label>
-          <input type="text" name="userid" placeholder="ID">
+          <input type="text" name="userid" placeholder="ID" id="userid">
+          <div class="warn" id="warnid">2-10자 입력해주시기 바랍니다..</div>
         </div>
         <div class="field">
           <label>비밀번호</label>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" id="password" >
+          <div class="warn" id="warnpw">6~24자 영문자, 숫자등을 이용하여 입력해주시기 바랍니다.</div>
         </div>
         <div class="field">
           <label>이름</label>
-          <input type="text" name="name" placeholder="Name">
+          <input type="text" name="name" placeholder="Name" id="name">
+          <div class="warn" id="warnname">이름을 입력해주시기 바랍니다.</div>
         </div>
         <div class="field">
           <label>연락처</label>
-          <input type="tel" name="phonenumber" placeholder="Phone Number">
+          <input type="tel" name="phonenumber" placeholder="Phone Number" id="phonenumber">
+          <div class="warn" id="warntel">01012345678 형식으로 입력해주시기 바랍니다.</div>
         </div>
         <div class="field">
           <label>이메일</label>
-          <input type="email" name="email" placeholder="Email">
+          <input type="email" name="email" placeholder="Email" id="email">
+          <div class="warn" id="warnemail">이메일을 입력해주시기 바랍니다.</div>
         </div>
         <div class="field">
           <label>종류</label>
-          <input type="radio" name="seller"> 판매자(Seller)  
-          <input type="radio" name="host">  주최자(Host)  
-          <input type="radio" name="user">  사용자(User)
+          <input type="radio" name="radiochk" value="seller" id="seller"> 판매자(Seller)  
+          <input type="radio" name="radiochk" value="host" id="host">  주최자(Host)  
+          <input type="radio" name="radiochk" value="user" id="user">  사용자(User)
+          <div class="warn" id="warnecheck">하나만 선택해주시기 바랍니다.</div>
         </div>
+
+        <div class="essential">필수항목을 입력해주시기 바랍니다.</div>
         <button id="form_btn"  type="submit" class="ui fluid large submit button">가입</button>
       </form>
 

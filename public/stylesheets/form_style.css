@@ -23,3 +23,14 @@
 input{
     margin:2px 0 !important;
 }
+.essential{
+    color: #ed4956;
+    text-align: center;
+    display : none;
+}
+.warn{ 
+    font-size: 13px;
+    color: #ed4956;
+    text-align: center;
+    display : none;
+}

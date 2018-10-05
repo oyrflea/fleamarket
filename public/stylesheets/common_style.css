@@ -58,3 +58,9 @@ input::placeholder{
     font-family: 'Noto Serif KR', sans-serif;
     font-weight: 500 !important;
 }
+.login{
+    display:none;
+}
+.logout{
+    display:block;
+}
