@@ -56,7 +56,7 @@
                 <div id="editor-container" name="content"></div>
                 <input type="hidden" name="content">
                 <div id="sbtn">
-                    <button id="btn_s" class="writebtn ui button" type="submit">등록</button>
+                    <button class="writebtn ui button" type="submit">등록</button>
                 </div>
             </form>
             <button class="writebtn ui button" onclick="location.href='../notice'">취소</button>
@@ -92,10 +92,13 @@
                 content.value = JSON.stringify(quill.getContents());
             };
 
-            var content = '<%- cont %>';
-            content = content.replace(/\n/g, "\\n");
-            var parsed_content = JSON.parse(content);
-            quill.setContents(parsed_content);
+            if( '<%-check%>'==1){
+                alert("제목을 입력해주세요.");
+                var content = '<%- cont %>';
+                content = content.replace(/\n/g, "\\n");
+                var parsed_content = JSON.parse(content);
+                quill.setContents(parsed_content);
+            }
         });
 
     </script>

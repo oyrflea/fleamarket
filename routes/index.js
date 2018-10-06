@@ -7,7 +7,7 @@ var router = express.Router();
 var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "wldms1404",
+  password: "jh1502",
   database: 'fleas'
 });
 conn.connect();
@@ -153,12 +153,13 @@ router.get('/notice/list/:page', function (req, res) {
 router.get('/notice/add', function (req, res) {
   var sql = 'SELECT id, title FROM notice';
   var cont='';
+  var check=0;
   conn.query(sql, function (err, rows, fields) {
     if (err) {
       console.log(err);
       res.status(500).send('Internal Server Error');
     }
-    res.render('form_notice', { rows: rows, cont: cont});
+    res.render('form_notice', { rows: rows, cont: cont, check:check});
   });
 });
 
@@ -166,7 +167,7 @@ router.post('/notice/add', function (req, res) {
   var title = req.body.title;
   var content = req.body.content;
   if (title) {
-    var writer = 'coco.B';
+    var writer = '주짓수짱!';
     var date = new Date();
     var dd = date.getDate();
     var mm = date.getMonth() + 1; //January is 0!
@@ -190,7 +191,8 @@ router.post('/notice/add', function (req, res) {
       }
     });
   } else {
-    res.render('form_notice', { title: title, cont: content });
+    var check=1;
+    res.render('form_notice', {cont: content ,check:check});
   }
 });
 
@@ -208,7 +210,7 @@ router.get('/notice/:id/delete', function (req, res) {
             console.log(err);
             res.status(500).send('Internal Server Error');
           } else {
-            res.redirect('/notice/list/1');
+            res.redirect('/notice');
           }
         });
       });
